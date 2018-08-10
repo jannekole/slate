@@ -519,7 +519,7 @@ In order to fetch and display activity data, the configurations should be correc
 <p>When user opens a prospect card with associated Customer Data that has unique_id value of 123-abc, a request is sent to the parsed address</p>
 
 <p><code>https://your.external.service/Entity/123-abc/details</code></p>
-<h3 id='a-description-of-the-properties-of-the-objects'>A description of the properties of the objects:</h3>
+<h3 id='a-description-of-the-properties-of-the-event-objects'>A description of the properties of the event objects:</h3>
 <ul>
 <li><code>id</code> - The unique id of the event. Required</li>
 <li><code>timestamp</code> - Used to sort the events. Accepts ISO 8601 (string) and unix time (seconds/milliseconds integer). Required</li>
@@ -5744,12 +5744,12 @@ curl -X POST https://api.vainu.io/api/v1/enrich_data/ <span class="se">\</span>
 </span></code></pre>
 <p><code>POST /enrich_data/</code></p>
 
-<p>This endpoint allows filling or correcting incomplete company data or simply enriching existing data with additional information available in Vainu.
-The user supplies all data related to the company in question available at their end and the endpoint attempts to identify the corresponding company in Vainu&#39;s database based on the input data.
-If a match is found all related information about the company is returned.
-If multiple matches are found a list containing basic information about them and an unambiguous identifier (vid, as in Vainu id) is returned. The user then needs to select the correct entity and re-request the endpoint with the company&#39;s unique vid identifier. Note: using the vid in the payload is enough for this results in a single correct match without exception.</p>
+<p>This endpoint allows you to enrich your company data with data from Vainu.
+The endpoint takes in data about a company in the post body, and attempts to find a matching company in the Vainu database.
+If a match is found, all related information about the company is returned.
+If multiple matches are found, a list containing basic information about them and a unique identifier (vid, or Vainu id) is returned. The user then needs to select the correct entity and re-request the endpoint with the company&#39;s unique vid identifier. Note: using the vid in the results always returns a single correct match.</p>
 <h3 id='matching-parameters'>Matching parameters:</h3>
-<p>Include matching parameters in the request body. Note: current implementation requires that the fields used for matching are correctly named. These fields include (at least one field marked with an asterisk* is required):</p>
+<p>Include matching parameters in the request body. Note: current implementation requires that the fields used for matching are correctly named. At least one field marked with an asterisk* is required. These fields include:</p>
 
 <ul>
 <li>company_name*</li>
