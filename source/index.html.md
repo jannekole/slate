@@ -1,14 +1,9 @@
 ---
 title: Vainu API
 language_tabs:
-  - shell: Shell
-  - http: HTTP
-  - javascript: JavaScript
-  - javascript--nodejs: Node.JS
-  - ruby: Ruby
   - python: Python
-  - java: Java
-  - go: Go
+  - shell: Shell
+  - javascript--nodejs: NodeJS
 toc_footers: []
 includes: []
 search: true
@@ -17,7 +12,7 @@ headingLevel: 2
 
 ---
 
-<h1 id="Vainu-API">Vainu API v1.0.0</h1>
+<h1 id="Vainu-API">Vainu API v0.0.1</h1>
 
 > Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
 
@@ -29,7 +24,7 @@ headingLevel: 2
 All datetime values are in [ISO8601 format](https://en.wikipedia.org/wiki/ISO_8601).
 
 ## Status codes
-List of status and error codes and their definitions. TAULUKKO TÄMÄKIN, katso scraper/mongo_models/exceptions.py
+List of status and error codes and their definitions.
 
 - `200` – SUCCESS, returns the requested data in JSON format
 - `401` – UNAUTHORIZED, Username and password doesn’t match. Check your password or username.
@@ -217,106 +212,13 @@ By default 100 results are shown per page. This can be modified by using the `pa
 
 > Code samples
 
-```shell
-# You can also use wget
-curl -X POST https://api.vainu.io/api/v1/customer_data/ \
-  -H 'Content-Type: application/json' \
-  -H 'Accept: application/json' \
-  -H 'API-Key: API_KEY'
-
-```
-
-```http
-POST https://api.vainu.io/api/v1/customer_data/ HTTP/1.1
-Host: api.vainu.io
-Content-Type: application/json
-Accept: application/json
-
-```
-
-```javascript
-var headers = {
-  'Content-Type':'application/json',
-  'Accept':'application/json',
-  'API-Key':'API_KEY'
-
-};
-
-$.ajax({
-  url: 'https://api.vainu.io/api/v1/customer_data/',
-  method: 'post',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
-
-```
-
-```javascript--nodejs
-const fetch = require('node-fetch');
-const inputBody = '{
-  "owner_email": "example@vainu.io",
-  "unique_id": "f39a1a59",
-  "won_deals_count": 2,
-  "open_deals_count": 1,
-  "lost_deals_count": 0,
-  "notes": "string",
-  "last_update": "2018-06-08",
-  "vid": 463880794,
-  "exact_name": "Vainu Finland Oy",
-  "normalize_name": "vainu",
-  "business_id": "2822996-6",
-  "country": "FI"
-}';
-const headers = {
-  'Content-Type':'application/json',
-  'Accept':'application/json',
-  'API-Key':'API_KEY'
-
-};
-
-fetch('https://api.vainu.io/api/v1/customer_data/',
-{
-  method: 'POST',
-  body: inputBody,
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Content-Type' => 'application/json',
-  'Accept' => 'application/json',
-  'API-Key' => 'API_KEY'
-}
-
-result = RestClient.post 'https://api.vainu.io/api/v1/customer_data/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
-
-```
-
 ```python
 import requests
 headers = {
-  'Content-Type': 'application/json',
-  'Accept': 'application/json',
-  'API-Key': 'API_KEY'
-}
-# replace 'API_KEY' with your api key from Vainu settings 
+  'Content-Type': 'application/json', 
+  'Accept': 'application/json', 
+  'API-Key': 'API_KEY'   # replace API_KEY with your api key from Vainu settings 
+} 
 body = {
   "owner_email": "example@vainu.io",
   "unique_id": "f39a1a59",
@@ -332,57 +234,60 @@ body = {
   "country": "FI"
 }
 r = requests.post('https://api.vainu.io/api/v1/customer_data/',
-		params={},
-		json=body,
-		headers=headers
+	params={},
+	json=body,
+	headers=headers
 )
 
 print r.json()
 
 ```
 
-```java
-URL obj = new URL("https://api.vainu.io/api/v1/customer_data/");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("POST");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
+```shell
+
+# You can also use wget
+curl -X POST https://api.vainu.io/api/v1/customer_data/ \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json' \
+  -H 'API-Key: API_KEY' \
+  --data '{"owner_email":"example@vainu.io","unique_id":"f39a1a59","won_deals_count":"2","open_deals_count":"1","lost_deals_count":"0","notes":"string","last_update":"2018-06-08","vid":"463880794","exact_name":"Vainu Finland Oy","normalize_name":"vainu","business_id":"2822996-6","country":"FI"}'
 
 ```
 
-```go
-package main
+```javascript--nodejs
+const fetch = require('node-fetch');  // install node-fetch (npm install node-fetch).
+const inputBody = {
+  "owner_email": "example@vainu.io",
+  "unique_id": "f39a1a59",
+  "won_deals_count": 2,
+  "open_deals_count": 1,
+  "lost_deals_count": 0,
+  "notes": "string",
+  "last_update": "2018-06-08",
+  "vid": 463880794,
+  "exact_name": "Vainu Finland Oy",
+  "normalize_name": "vainu",
+  "business_id": "2822996-6",
+  "country": "FI"
+};
+const headers = {
+  'Content-Type':'application/json',  
+  'Accept':'application/json',  
+  'API-Key':'API_KEY'    // replace API_KEY with your api key from Vainu settings 
 
-import (
-       "bytes"
-       "net/http"
-)
+};
 
-func main() {
-
-    headers := map[string][]string{
-        "Content-Type": []string{"application/json"},
-        "Accept": []string{"application/json"},
-        "API-Key": []string{"API_KEY"},
-        
-    }
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("POST", "https://api.vainu.io/api/v1/customer_data/", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
+fetch('https://api.vainu.io/api/v1/customer_data/',
+{
+  method: 'POST',
+  body: JSON.stringify(inputBody),
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -511,7 +416,24 @@ API-Key, basic
 
 > Code samples
 
+```python
+import requests
+headers = {
+  'Accept': 'application/json', 
+  'API-Key': 'API_KEY'   # replace API_KEY with your api key from Vainu settings 
+} 
+
+r = requests.get('https://api.vainu.io/api/v1/customer_data/',
+	params={},
+	headers=headers
+)
+
+print r.json()
+
+```
+
 ```shell
+
 # You can also use wget
 curl -X GET https://api.vainu.io/api/v1/customer_data/ \
   -H 'Accept: application/json' \
@@ -519,38 +441,12 @@ curl -X GET https://api.vainu.io/api/v1/customer_data/ \
 
 ```
 
-```http
-GET https://api.vainu.io/api/v1/customer_data/ HTTP/1.1
-Host: api.vainu.io
-Accept: application/json
-
-```
-
-```javascript
-var headers = {
-  'Accept':'application/json',
-  'API-Key':'API_KEY'
-
-};
-
-$.ajax({
-  url: 'https://api.vainu.io/api/v1/customer_data/',
-  method: 'get',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
-
-```
-
 ```javascript--nodejs
-const fetch = require('node-fetch');
+const fetch = require('node-fetch');  // install node-fetch (npm install node-fetch).
 
 const headers = {
-  'Accept':'application/json',
-  'API-Key':'API_KEY'
+  'Accept':'application/json',  
+  'API-Key':'API_KEY'    // replace API_KEY with your api key from Vainu settings 
 
 };
 
@@ -565,84 +461,6 @@ fetch('https://api.vainu.io/api/v1/customer_data/',
 }).then(function(body) {
     console.log(body);
 });
-
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Accept' => 'application/json',
-  'API-Key' => 'API_KEY'
-}
-
-result = RestClient.get 'https://api.vainu.io/api/v1/customer_data/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'API-Key': 'API_KEY'
-}
-# replace 'API_KEY' with your api key from Vainu settings 
-
-r = requests.get('https://api.vainu.io/api/v1/customer_data/',
-		params={},
-		headers=headers
-)
-
-print r.json()
-
-```
-
-```java
-URL obj = new URL("https://api.vainu.io/api/v1/customer_data/");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("GET");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-
-```
-
-```go
-package main
-
-import (
-       "bytes"
-       "net/http"
-)
-
-func main() {
-
-    headers := map[string][]string{
-        "Accept": []string{"application/json"},
-        "API-Key": []string{"API_KEY"},
-        
-    }
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "https://api.vainu.io/api/v1/customer_data/", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
 
 ```
 
@@ -717,7 +535,24 @@ API-Key, basic
 
 > Code samples
 
+```python
+import requests
+headers = {
+  'Accept': 'application/json', 
+  'API-Key': 'API_KEY'   # replace API_KEY with your api key from Vainu settings 
+} 
+
+r = requests.patch('https://api.vainu.io/api/v1/customer_data/',
+	params={},
+	headers=headers
+)
+
+print r.json()
+
+```
+
 ```shell
+
 # You can also use wget
 curl -X PATCH https://api.vainu.io/api/v1/customer_data/ \
   -H 'Accept: application/json' \
@@ -725,38 +560,12 @@ curl -X PATCH https://api.vainu.io/api/v1/customer_data/ \
 
 ```
 
-```http
-PATCH https://api.vainu.io/api/v1/customer_data/ HTTP/1.1
-Host: api.vainu.io
-Accept: application/json
-
-```
-
-```javascript
-var headers = {
-  'Accept':'application/json',
-  'API-Key':'API_KEY'
-
-};
-
-$.ajax({
-  url: 'https://api.vainu.io/api/v1/customer_data/',
-  method: 'patch',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
-
-```
-
 ```javascript--nodejs
-const fetch = require('node-fetch');
+const fetch = require('node-fetch');  // install node-fetch (npm install node-fetch).
 
 const headers = {
-  'Accept':'application/json',
-  'API-Key':'API_KEY'
+  'Accept':'application/json',  
+  'API-Key':'API_KEY'    // replace API_KEY with your api key from Vainu settings 
 
 };
 
@@ -771,84 +580,6 @@ fetch('https://api.vainu.io/api/v1/customer_data/',
 }).then(function(body) {
     console.log(body);
 });
-
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Accept' => 'application/json',
-  'API-Key' => 'API_KEY'
-}
-
-result = RestClient.patch 'https://api.vainu.io/api/v1/customer_data/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'API-Key': 'API_KEY'
-}
-# replace 'API_KEY' with your api key from Vainu settings 
-
-r = requests.patch('https://api.vainu.io/api/v1/customer_data/',
-		params={},
-		headers=headers
-)
-
-print r.json()
-
-```
-
-```java
-URL obj = new URL("https://api.vainu.io/api/v1/customer_data/");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("PATCH");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-
-```
-
-```go
-package main
-
-import (
-       "bytes"
-       "net/http"
-)
-
-func main() {
-
-    headers := map[string][]string{
-        "Accept": []string{"application/json"},
-        "API-Key": []string{"API_KEY"},
-        
-    }
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("PATCH", "https://api.vainu.io/api/v1/customer_data/", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
 
 ```
 
@@ -927,7 +658,24 @@ API-Key, basic
 
 > Code samples
 
+```python
+import requests
+headers = {
+  'Accept': 'application/json', 
+  'API-Key': 'API_KEY'   # replace API_KEY with your api key from Vainu settings 
+} 
+
+r = requests.delete('https://api.vainu.io/api/v1/customer_data/',
+	params={},
+	headers=headers
+)
+
+print r.json()
+
+```
+
 ```shell
+
 # You can also use wget
 curl -X DELETE https://api.vainu.io/api/v1/customer_data/ \
   -H 'Accept: application/json' \
@@ -935,38 +683,12 @@ curl -X DELETE https://api.vainu.io/api/v1/customer_data/ \
 
 ```
 
-```http
-DELETE https://api.vainu.io/api/v1/customer_data/ HTTP/1.1
-Host: api.vainu.io
-Accept: application/json
-
-```
-
-```javascript
-var headers = {
-  'Accept':'application/json',
-  'API-Key':'API_KEY'
-
-};
-
-$.ajax({
-  url: 'https://api.vainu.io/api/v1/customer_data/',
-  method: 'delete',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
-
-```
-
 ```javascript--nodejs
-const fetch = require('node-fetch');
+const fetch = require('node-fetch');  // install node-fetch (npm install node-fetch).
 
 const headers = {
-  'Accept':'application/json',
-  'API-Key':'API_KEY'
+  'Accept':'application/json',  
+  'API-Key':'API_KEY'    // replace API_KEY with your api key from Vainu settings 
 
 };
 
@@ -981,84 +703,6 @@ fetch('https://api.vainu.io/api/v1/customer_data/',
 }).then(function(body) {
     console.log(body);
 });
-
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Accept' => 'application/json',
-  'API-Key' => 'API_KEY'
-}
-
-result = RestClient.delete 'https://api.vainu.io/api/v1/customer_data/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'API-Key': 'API_KEY'
-}
-# replace 'API_KEY' with your api key from Vainu settings 
-
-r = requests.delete('https://api.vainu.io/api/v1/customer_data/',
-		params={},
-		headers=headers
-)
-
-print r.json()
-
-```
-
-```java
-URL obj = new URL("https://api.vainu.io/api/v1/customer_data/");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("DELETE");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-
-```
-
-```go
-package main
-
-import (
-       "bytes"
-       "net/http"
-)
-
-func main() {
-
-    headers := map[string][]string{
-        "Accept": []string{"application/json"},
-        "API-Key": []string{"API_KEY"},
-        
-    }
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("DELETE", "https://api.vainu.io/api/v1/customer_data/", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
 
 ```
 
@@ -1116,7 +760,24 @@ API-Key, basic
 
 > Code samples
 
+```python
+import requests
+headers = {
+  'Accept': 'application/json', 
+  'API-Key': 'API_KEY'   # replace API_KEY with your api key from Vainu settings 
+} 
+
+r = requests.get('https://api.vainu.io/api/v1/customer_data/{id}/',
+	params={},
+	headers=headers
+)
+
+print r.json()
+
+```
+
 ```shell
+
 # You can also use wget
 curl -X GET https://api.vainu.io/api/v1/customer_data/{id}/ \
   -H 'Accept: application/json' \
@@ -1124,38 +785,12 @@ curl -X GET https://api.vainu.io/api/v1/customer_data/{id}/ \
 
 ```
 
-```http
-GET https://api.vainu.io/api/v1/customer_data/{id}/ HTTP/1.1
-Host: api.vainu.io
-Accept: application/json
-
-```
-
-```javascript
-var headers = {
-  'Accept':'application/json',
-  'API-Key':'API_KEY'
-
-};
-
-$.ajax({
-  url: 'https://api.vainu.io/api/v1/customer_data/{id}/',
-  method: 'get',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
-
-```
-
 ```javascript--nodejs
-const fetch = require('node-fetch');
+const fetch = require('node-fetch');  // install node-fetch (npm install node-fetch).
 
 const headers = {
-  'Accept':'application/json',
-  'API-Key':'API_KEY'
+  'Accept':'application/json',  
+  'API-Key':'API_KEY'    // replace API_KEY with your api key from Vainu settings 
 
 };
 
@@ -1170,84 +805,6 @@ fetch('https://api.vainu.io/api/v1/customer_data/{id}/',
 }).then(function(body) {
     console.log(body);
 });
-
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Accept' => 'application/json',
-  'API-Key' => 'API_KEY'
-}
-
-result = RestClient.get 'https://api.vainu.io/api/v1/customer_data/{id}/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'API-Key': 'API_KEY'
-}
-# replace 'API_KEY' with your api key from Vainu settings 
-
-r = requests.get('https://api.vainu.io/api/v1/customer_data/{id}/',
-		params={},
-		headers=headers
-)
-
-print r.json()
-
-```
-
-```java
-URL obj = new URL("https://api.vainu.io/api/v1/customer_data/{id}/");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("GET");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-
-```
-
-```go
-package main
-
-import (
-       "bytes"
-       "net/http"
-)
-
-func main() {
-
-    headers := map[string][]string{
-        "Accept": []string{"application/json"},
-        "API-Key": []string{"API_KEY"},
-        
-    }
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "https://api.vainu.io/api/v1/customer_data/{id}/", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
 
 ```
 
@@ -1308,106 +865,13 @@ API-Key, basic
 
 > Code samples
 
-```shell
-# You can also use wget
-curl -X PATCH https://api.vainu.io/api/v1/customer_data/{id}/ \
-  -H 'Content-Type: application/json' \
-  -H 'Accept: application/json' \
-  -H 'API-Key: API_KEY'
-
-```
-
-```http
-PATCH https://api.vainu.io/api/v1/customer_data/{id}/ HTTP/1.1
-Host: api.vainu.io
-Content-Type: application/json
-Accept: application/json
-
-```
-
-```javascript
-var headers = {
-  'Content-Type':'application/json',
-  'Accept':'application/json',
-  'API-Key':'API_KEY'
-
-};
-
-$.ajax({
-  url: 'https://api.vainu.io/api/v1/customer_data/{id}/',
-  method: 'patch',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
-
-```
-
-```javascript--nodejs
-const fetch = require('node-fetch');
-const inputBody = '{
-  "owner_email": "example@vainu.io",
-  "unique_id": "f39a1a59",
-  "won_deals_count": 2,
-  "open_deals_count": 1,
-  "lost_deals_count": 0,
-  "notes": "string",
-  "last_update": "2018-06-08",
-  "vid": 463880794,
-  "exact_name": "Vainu Finland Oy",
-  "normalize_name": "vainu",
-  "business_id": "2822996-6",
-  "country": "FI"
-}';
-const headers = {
-  'Content-Type':'application/json',
-  'Accept':'application/json',
-  'API-Key':'API_KEY'
-
-};
-
-fetch('https://api.vainu.io/api/v1/customer_data/{id}/',
-{
-  method: 'PATCH',
-  body: inputBody,
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Content-Type' => 'application/json',
-  'Accept' => 'application/json',
-  'API-Key' => 'API_KEY'
-}
-
-result = RestClient.patch 'https://api.vainu.io/api/v1/customer_data/{id}/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
-
-```
-
 ```python
 import requests
 headers = {
-  'Content-Type': 'application/json',
-  'Accept': 'application/json',
-  'API-Key': 'API_KEY'
-}
-# replace 'API_KEY' with your api key from Vainu settings 
+  'Content-Type': 'application/json', 
+  'Accept': 'application/json', 
+  'API-Key': 'API_KEY'   # replace API_KEY with your api key from Vainu settings 
+} 
 body = {
   "owner_email": "example@vainu.io",
   "unique_id": "f39a1a59",
@@ -1423,57 +887,60 @@ body = {
   "country": "FI"
 }
 r = requests.patch('https://api.vainu.io/api/v1/customer_data/{id}/',
-		params={},
-		json=body,
-		headers=headers
+	params={},
+	json=body,
+	headers=headers
 )
 
 print r.json()
 
 ```
 
-```java
-URL obj = new URL("https://api.vainu.io/api/v1/customer_data/{id}/");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("PATCH");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
+```shell
+
+# You can also use wget
+curl -X PATCH https://api.vainu.io/api/v1/customer_data/{id}/ \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json' \
+  -H 'API-Key: API_KEY' \
+  --data '{"owner_email":"example@vainu.io","unique_id":"f39a1a59","won_deals_count":"2","open_deals_count":"1","lost_deals_count":"0","notes":"string","last_update":"2018-06-08","vid":"463880794","exact_name":"Vainu Finland Oy","normalize_name":"vainu","business_id":"2822996-6","country":"FI"}'
 
 ```
 
-```go
-package main
+```javascript--nodejs
+const fetch = require('node-fetch');  // install node-fetch (npm install node-fetch).
+const inputBody = {
+  "owner_email": "example@vainu.io",
+  "unique_id": "f39a1a59",
+  "won_deals_count": 2,
+  "open_deals_count": 1,
+  "lost_deals_count": 0,
+  "notes": "string",
+  "last_update": "2018-06-08",
+  "vid": 463880794,
+  "exact_name": "Vainu Finland Oy",
+  "normalize_name": "vainu",
+  "business_id": "2822996-6",
+  "country": "FI"
+};
+const headers = {
+  'Content-Type':'application/json',  
+  'Accept':'application/json',  
+  'API-Key':'API_KEY'    // replace API_KEY with your api key from Vainu settings 
 
-import (
-       "bytes"
-       "net/http"
-)
+};
 
-func main() {
-
-    headers := map[string][]string{
-        "Content-Type": []string{"application/json"},
-        "Accept": []string{"application/json"},
-        "API-Key": []string{"API_KEY"},
-        
-    }
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("PATCH", "https://api.vainu.io/api/v1/customer_data/{id}/", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
+fetch('https://api.vainu.io/api/v1/customer_data/{id}/',
+{
+  method: 'PATCH',
+  body: JSON.stringify(inputBody),
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -1543,42 +1010,34 @@ API-Key, basic
 
 > Code samples
 
+```python
+import requests
+headers = {
+  'API-Key': 'API_KEY'   # replace API_KEY with your api key from Vainu settings 
+} 
+
+r = requests.delete('https://api.vainu.io/api/v1/customer_data/{id}/',
+	params={},
+	headers=headers
+)
+
+print r.json()
+
+```
+
 ```shell
+
 # You can also use wget
 curl -X DELETE https://api.vainu.io/api/v1/customer_data/{id}/ \
   -H 'API-Key: API_KEY'
 
 ```
 
-```http
-DELETE https://api.vainu.io/api/v1/customer_data/{id}/ HTTP/1.1
-Host: api.vainu.io
-
-```
-
-```javascript
-var headers = {
-  'API-Key':'API_KEY'
-
-};
-
-$.ajax({
-  url: 'https://api.vainu.io/api/v1/customer_data/{id}/',
-  method: 'delete',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
-
-```
-
 ```javascript--nodejs
-const fetch = require('node-fetch');
+const fetch = require('node-fetch');  // install node-fetch (npm install node-fetch).
 
 const headers = {
-  'API-Key':'API_KEY'
+  'API-Key':'API_KEY'    // replace API_KEY with your api key from Vainu settings 
 
 };
 
@@ -1593,81 +1052,6 @@ fetch('https://api.vainu.io/api/v1/customer_data/{id}/',
 }).then(function(body) {
     console.log(body);
 });
-
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'API-Key' => 'API_KEY'
-}
-
-result = RestClient.delete 'https://api.vainu.io/api/v1/customer_data/{id}/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'API-Key': 'API_KEY'
-}
-# replace 'API_KEY' with your api key from Vainu settings 
-
-r = requests.delete('https://api.vainu.io/api/v1/customer_data/{id}/',
-		params={},
-		headers=headers
-)
-
-print r.json()
-
-```
-
-```java
-URL obj = new URL("https://api.vainu.io/api/v1/customer_data/{id}/");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("DELETE");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-
-```
-
-```go
-package main
-
-import (
-       "bytes"
-       "net/http"
-)
-
-func main() {
-
-    headers := map[string][]string{
-        "API-Key": []string{"API_KEY"},
-        
-    }
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("DELETE", "https://api.vainu.io/api/v1/customer_data/{id}/", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
 
 ```
 
@@ -1701,7 +1085,24 @@ View the status of creating multiple customer_data objects with POST /customer_d
 
 > Code samples
 
+```python
+import requests
+headers = {
+  'Accept': 'application/json', 
+  'API-Key': 'API_KEY'   # replace API_KEY with your api key from Vainu settings 
+} 
+
+r = requests.get('https://api.vainu.io/api/v1/async_result/batch-import/{job_id}/',
+	params={},
+	headers=headers
+)
+
+print r.json()
+
+```
+
 ```shell
+
 # You can also use wget
 curl -X GET https://api.vainu.io/api/v1/async_result/batch-import/{job_id}/ \
   -H 'Accept: application/json' \
@@ -1709,38 +1110,12 @@ curl -X GET https://api.vainu.io/api/v1/async_result/batch-import/{job_id}/ \
 
 ```
 
-```http
-GET https://api.vainu.io/api/v1/async_result/batch-import/{job_id}/ HTTP/1.1
-Host: api.vainu.io
-Accept: application/json
-
-```
-
-```javascript
-var headers = {
-  'Accept':'application/json',
-  'API-Key':'API_KEY'
-
-};
-
-$.ajax({
-  url: 'https://api.vainu.io/api/v1/async_result/batch-import/{job_id}/',
-  method: 'get',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
-
-```
-
 ```javascript--nodejs
-const fetch = require('node-fetch');
+const fetch = require('node-fetch');  // install node-fetch (npm install node-fetch).
 
 const headers = {
-  'Accept':'application/json',
-  'API-Key':'API_KEY'
+  'Accept':'application/json',  
+  'API-Key':'API_KEY'    // replace API_KEY with your api key from Vainu settings 
 
 };
 
@@ -1755,84 +1130,6 @@ fetch('https://api.vainu.io/api/v1/async_result/batch-import/{job_id}/',
 }).then(function(body) {
     console.log(body);
 });
-
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Accept' => 'application/json',
-  'API-Key' => 'API_KEY'
-}
-
-result = RestClient.get 'https://api.vainu.io/api/v1/async_result/batch-import/{job_id}/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'API-Key': 'API_KEY'
-}
-# replace 'API_KEY' with your api key from Vainu settings 
-
-r = requests.get('https://api.vainu.io/api/v1/async_result/batch-import/{job_id}/',
-		params={},
-		headers=headers
-)
-
-print r.json()
-
-```
-
-```java
-URL obj = new URL("https://api.vainu.io/api/v1/async_result/batch-import/{job_id}/");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("GET");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-
-```
-
-```go
-package main
-
-import (
-       "bytes"
-       "net/http"
-)
-
-func main() {
-
-    headers := map[string][]string{
-        "Accept": []string{"application/json"},
-        "API-Key": []string{"API_KEY"},
-        
-    }
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "https://api.vainu.io/api/v1/async_result/batch-import/{job_id}/", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
 
 ```
 
@@ -1974,7 +1271,24 @@ API-Key, basic
 
 > Code samples
 
+```python
+import requests
+headers = {
+  'Accept': 'application/json', 
+  'API-Key': 'API_KEY'   # replace API_KEY with your api key from Vainu settings 
+} 
+
+r = requests.delete('https://api.vainu.io/api/v1/async_result/batch-import/{job_id}/',
+	params={},
+	headers=headers
+)
+
+print r.json()
+
+```
+
 ```shell
+
 # You can also use wget
 curl -X DELETE https://api.vainu.io/api/v1/async_result/batch-import/{job_id}/ \
   -H 'Accept: application/json' \
@@ -1982,38 +1296,12 @@ curl -X DELETE https://api.vainu.io/api/v1/async_result/batch-import/{job_id}/ \
 
 ```
 
-```http
-DELETE https://api.vainu.io/api/v1/async_result/batch-import/{job_id}/ HTTP/1.1
-Host: api.vainu.io
-Accept: application/json
-
-```
-
-```javascript
-var headers = {
-  'Accept':'application/json',
-  'API-Key':'API_KEY'
-
-};
-
-$.ajax({
-  url: 'https://api.vainu.io/api/v1/async_result/batch-import/{job_id}/',
-  method: 'delete',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
-
-```
-
 ```javascript--nodejs
-const fetch = require('node-fetch');
+const fetch = require('node-fetch');  // install node-fetch (npm install node-fetch).
 
 const headers = {
-  'Accept':'application/json',
-  'API-Key':'API_KEY'
+  'Accept':'application/json',  
+  'API-Key':'API_KEY'    // replace API_KEY with your api key from Vainu settings 
 
 };
 
@@ -2028,84 +1316,6 @@ fetch('https://api.vainu.io/api/v1/async_result/batch-import/{job_id}/',
 }).then(function(body) {
     console.log(body);
 });
-
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Accept' => 'application/json',
-  'API-Key' => 'API_KEY'
-}
-
-result = RestClient.delete 'https://api.vainu.io/api/v1/async_result/batch-import/{job_id}/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'API-Key': 'API_KEY'
-}
-# replace 'API_KEY' with your api key from Vainu settings 
-
-r = requests.delete('https://api.vainu.io/api/v1/async_result/batch-import/{job_id}/',
-		params={},
-		headers=headers
-)
-
-print r.json()
-
-```
-
-```java
-URL obj = new URL("https://api.vainu.io/api/v1/async_result/batch-import/{job_id}/");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("DELETE");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-
-```
-
-```go
-package main
-
-import (
-       "bytes"
-       "net/http"
-)
-
-func main() {
-
-    headers := map[string][]string{
-        "Accept": []string{"application/json"},
-        "API-Key": []string{"API_KEY"},
-        
-    }
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("DELETE", "https://api.vainu.io/api/v1/async_result/batch-import/{job_id}/", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
 
 ```
 
@@ -2181,7 +1391,24 @@ API-Key, basic
 
 > Code samples
 
+```python
+import requests
+headers = {
+  'Accept': 'application/json', 
+  'API-Key': 'API_KEY'   # replace API_KEY with your api key from Vainu settings 
+} 
+
+r = requests.get('https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/',
+	params={},
+	headers=headers
+)
+
+print r.json()
+
+```
+
 ```shell
+
 # You can also use wget
 curl -X GET https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/ \
   -H 'Accept: application/json' \
@@ -2189,38 +1416,12 @@ curl -X GET https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/ \
 
 ```
 
-```http
-GET https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/ HTTP/1.1
-Host: api.vainu.io
-Accept: application/json
-
-```
-
-```javascript
-var headers = {
-  'Accept':'application/json',
-  'API-Key':'API_KEY'
-
-};
-
-$.ajax({
-  url: 'https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/',
-  method: 'get',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
-
-```
-
 ```javascript--nodejs
-const fetch = require('node-fetch');
+const fetch = require('node-fetch');  // install node-fetch (npm install node-fetch).
 
 const headers = {
-  'Accept':'application/json',
-  'API-Key':'API_KEY'
+  'Accept':'application/json',  
+  'API-Key':'API_KEY'    // replace API_KEY with your api key from Vainu settings 
 
 };
 
@@ -2235,84 +1436,6 @@ fetch('https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/',
 }).then(function(body) {
     console.log(body);
 });
-
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Accept' => 'application/json',
-  'API-Key' => 'API_KEY'
-}
-
-result = RestClient.get 'https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'API-Key': 'API_KEY'
-}
-# replace 'API_KEY' with your api key from Vainu settings 
-
-r = requests.get('https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/',
-		params={},
-		headers=headers
-)
-
-print r.json()
-
-```
-
-```java
-URL obj = new URL("https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("GET");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-
-```
-
-```go
-package main
-
-import (
-       "bytes"
-       "net/http"
-)
-
-func main() {
-
-    headers := map[string][]string{
-        "Accept": []string{"application/json"},
-        "API-Key": []string{"API_KEY"},
-        
-    }
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
 
 ```
 
@@ -2420,7 +1543,24 @@ API-Key, basic
 
 > Code samples
 
+```python
+import requests
+headers = {
+  'Accept': 'application/json', 
+  'API-Key': 'API_KEY'   # replace API_KEY with your api key from Vainu settings 
+} 
+
+r = requests.get('https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/all/',
+	params={},
+	headers=headers
+)
+
+print r.json()
+
+```
+
 ```shell
+
 # You can also use wget
 curl -X GET https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/all/ \
   -H 'Accept: application/json' \
@@ -2428,38 +1568,12 @@ curl -X GET https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/all/
 
 ```
 
-```http
-GET https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/all/ HTTP/1.1
-Host: api.vainu.io
-Accept: application/json
-
-```
-
-```javascript
-var headers = {
-  'Accept':'application/json',
-  'API-Key':'API_KEY'
-
-};
-
-$.ajax({
-  url: 'https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/all/',
-  method: 'get',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
-
-```
-
 ```javascript--nodejs
-const fetch = require('node-fetch');
+const fetch = require('node-fetch');  // install node-fetch (npm install node-fetch).
 
 const headers = {
-  'Accept':'application/json',
-  'API-Key':'API_KEY'
+  'Accept':'application/json',  
+  'API-Key':'API_KEY'    // replace API_KEY with your api key from Vainu settings 
 
 };
 
@@ -2474,84 +1588,6 @@ fetch('https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/all/',
 }).then(function(body) {
     console.log(body);
 });
-
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Accept' => 'application/json',
-  'API-Key' => 'API_KEY'
-}
-
-result = RestClient.get 'https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/all/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'API-Key': 'API_KEY'
-}
-# replace 'API_KEY' with your api key from Vainu settings 
-
-r = requests.get('https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/all/',
-		params={},
-		headers=headers
-)
-
-print r.json()
-
-```
-
-```java
-URL obj = new URL("https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/all/");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("GET");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-
-```
-
-```go
-package main
-
-import (
-       "bytes"
-       "net/http"
-)
-
-func main() {
-
-    headers := map[string][]string{
-        "Accept": []string{"application/json"},
-        "API-Key": []string{"API_KEY"},
-        
-    }
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/all/", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
 
 ```
 
@@ -2689,7 +1725,24 @@ API-Key, basic
 
 > Code samples
 
+```python
+import requests
+headers = {
+  'Accept': 'application/json', 
+  'API-Key': 'API_KEY'   # replace API_KEY with your api key from Vainu settings 
+} 
+
+r = requests.get('https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/leads/',
+	params={},
+	headers=headers
+)
+
+print r.json()
+
+```
+
 ```shell
+
 # You can also use wget
 curl -X GET https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/leads/ \
   -H 'Accept: application/json' \
@@ -2697,38 +1750,12 @@ curl -X GET https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/lead
 
 ```
 
-```http
-GET https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/leads/ HTTP/1.1
-Host: api.vainu.io
-Accept: application/json
-
-```
-
-```javascript
-var headers = {
-  'Accept':'application/json',
-  'API-Key':'API_KEY'
-
-};
-
-$.ajax({
-  url: 'https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/leads/',
-  method: 'get',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
-
-```
-
 ```javascript--nodejs
-const fetch = require('node-fetch');
+const fetch = require('node-fetch');  // install node-fetch (npm install node-fetch).
 
 const headers = {
-  'Accept':'application/json',
-  'API-Key':'API_KEY'
+  'Accept':'application/json',  
+  'API-Key':'API_KEY'    // replace API_KEY with your api key from Vainu settings 
 
 };
 
@@ -2743,84 +1770,6 @@ fetch('https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/leads/',
 }).then(function(body) {
     console.log(body);
 });
-
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Accept' => 'application/json',
-  'API-Key' => 'API_KEY'
-}
-
-result = RestClient.get 'https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/leads/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'API-Key': 'API_KEY'
-}
-# replace 'API_KEY' with your api key from Vainu settings 
-
-r = requests.get('https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/leads/',
-		params={},
-		headers=headers
-)
-
-print r.json()
-
-```
-
-```java
-URL obj = new URL("https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/leads/");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("GET");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-
-```
-
-```go
-package main
-
-import (
-       "bytes"
-       "net/http"
-)
-
-func main() {
-
-    headers := map[string][]string{
-        "Accept": []string{"application/json"},
-        "API-Key": []string{"API_KEY"},
-        
-    }
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/leads/", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
 
 ```
 
@@ -2913,7 +1862,24 @@ API-Key, basic
 
 > Code samples
 
+```python
+import requests
+headers = {
+  'Accept': 'application/json', 
+  'API-Key': 'API_KEY'   # replace API_KEY with your api key from Vainu settings 
+} 
+
+r = requests.get('https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/contacts/',
+	params={},
+	headers=headers
+)
+
+print r.json()
+
+```
+
 ```shell
+
 # You can also use wget
 curl -X GET https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/contacts/ \
   -H 'Accept: application/json' \
@@ -2921,38 +1887,12 @@ curl -X GET https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/cont
 
 ```
 
-```http
-GET https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/contacts/ HTTP/1.1
-Host: api.vainu.io
-Accept: application/json
-
-```
-
-```javascript
-var headers = {
-  'Accept':'application/json',
-  'API-Key':'API_KEY'
-
-};
-
-$.ajax({
-  url: 'https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/contacts/',
-  method: 'get',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
-
-```
-
 ```javascript--nodejs
-const fetch = require('node-fetch');
+const fetch = require('node-fetch');  // install node-fetch (npm install node-fetch).
 
 const headers = {
-  'Accept':'application/json',
-  'API-Key':'API_KEY'
+  'Accept':'application/json',  
+  'API-Key':'API_KEY'    // replace API_KEY with your api key from Vainu settings 
 
 };
 
@@ -2967,84 +1907,6 @@ fetch('https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/contacts/
 }).then(function(body) {
     console.log(body);
 });
-
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Accept' => 'application/json',
-  'API-Key' => 'API_KEY'
-}
-
-result = RestClient.get 'https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/contacts/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'API-Key': 'API_KEY'
-}
-# replace 'API_KEY' with your api key from Vainu settings 
-
-r = requests.get('https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/contacts/',
-		params={},
-		headers=headers
-)
-
-print r.json()
-
-```
-
-```java
-URL obj = new URL("https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/contacts/");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("GET");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-
-```
-
-```go
-package main
-
-import (
-       "bytes"
-       "net/http"
-)
-
-func main() {
-
-    headers := map[string][]string{
-        "Accept": []string{"application/json"},
-        "API-Key": []string{"API_KEY"},
-        
-    }
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/contacts/", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
 
 ```
 
@@ -3104,7 +1966,24 @@ API-Key, basic
 
 > Code samples
 
+```python
+import requests
+headers = {
+  'Accept': 'application/json', 
+  'API-Key': 'API_KEY'   # replace API_KEY with your api key from Vainu settings 
+} 
+
+r = requests.get('https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/financial_statements/',
+	params={},
+	headers=headers
+)
+
+print r.json()
+
+```
+
 ```shell
+
 # You can also use wget
 curl -X GET https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/financial_statements/ \
   -H 'Accept: application/json' \
@@ -3112,38 +1991,12 @@ curl -X GET https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/fina
 
 ```
 
-```http
-GET https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/financial_statements/ HTTP/1.1
-Host: api.vainu.io
-Accept: application/json
-
-```
-
-```javascript
-var headers = {
-  'Accept':'application/json',
-  'API-Key':'API_KEY'
-
-};
-
-$.ajax({
-  url: 'https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/financial_statements/',
-  method: 'get',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
-
-```
-
 ```javascript--nodejs
-const fetch = require('node-fetch');
+const fetch = require('node-fetch');  // install node-fetch (npm install node-fetch).
 
 const headers = {
-  'Accept':'application/json',
-  'API-Key':'API_KEY'
+  'Accept':'application/json',  
+  'API-Key':'API_KEY'    // replace API_KEY with your api key from Vainu settings 
 
 };
 
@@ -3158,84 +2011,6 @@ fetch('https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/financial
 }).then(function(body) {
     console.log(body);
 });
-
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Accept' => 'application/json',
-  'API-Key' => 'API_KEY'
-}
-
-result = RestClient.get 'https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/financial_statements/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'API-Key': 'API_KEY'
-}
-# replace 'API_KEY' with your api key from Vainu settings 
-
-r = requests.get('https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/financial_statements/',
-		params={},
-		headers=headers
-)
-
-print r.json()
-
-```
-
-```java
-URL obj = new URL("https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/financial_statements/");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("GET");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-
-```
-
-```go
-package main
-
-import (
-       "bytes"
-       "net/http"
-)
-
-func main() {
-
-    headers := map[string][]string{
-        "Accept": []string{"application/json"},
-        "API-Key": []string{"API_KEY"},
-        
-    }
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/financial_statements/", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
 
 ```
 
@@ -3309,7 +2084,24 @@ API-Key, basic
 
 > Code samples
 
+```python
+import requests
+headers = {
+  'Accept': 'application/json', 
+  'API-Key': 'API_KEY'   # replace API_KEY with your api key from Vainu settings 
+} 
+
+r = requests.get('https://api.vainu.io/api/v1/prospects/filter/',
+	params={  'business_id': 'FI09704098'},
+	headers=headers
+)
+
+print r.json()
+
+```
+
 ```shell
+
 # You can also use wget
 curl -X GET https://api.vainu.io/api/v1/prospects/filter/?business_id=FI09704098 \
   -H 'Accept: application/json' \
@@ -3317,38 +2109,12 @@ curl -X GET https://api.vainu.io/api/v1/prospects/filter/?business_id=FI09704098
 
 ```
 
-```http
-GET https://api.vainu.io/api/v1/prospects/filter/?business_id=FI09704098 HTTP/1.1
-Host: api.vainu.io
-Accept: application/json
-
-```
-
-```javascript
-var headers = {
-  'Accept':'application/json',
-  'API-Key':'API_KEY'
-
-};
-
-$.ajax({
-  url: 'https://api.vainu.io/api/v1/prospects/filter/',
-  method: 'get',
-  data: '?business_id=FI09704098',
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
-
-```
-
 ```javascript--nodejs
-const fetch = require('node-fetch');
+const fetch = require('node-fetch');  // install node-fetch (npm install node-fetch).
 
 const headers = {
-  'Accept':'application/json',
-  'API-Key':'API_KEY'
+  'Accept':'application/json',  
+  'API-Key':'API_KEY'    // replace API_KEY with your api key from Vainu settings 
 
 };
 
@@ -3363,85 +2129,6 @@ fetch('https://api.vainu.io/api/v1/prospects/filter/?business_id=FI09704098',
 }).then(function(body) {
     console.log(body);
 });
-
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Accept' => 'application/json',
-  'API-Key' => 'API_KEY'
-}
-
-result = RestClient.get 'https://api.vainu.io/api/v1/prospects/filter/',
-  params: {
-  'business_id' => 'string'
-}, headers: headers
-
-p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'API-Key': 'API_KEY'
-}
-# replace 'API_KEY' with your api key from Vainu settings 
-
-r = requests.get('https://api.vainu.io/api/v1/prospects/filter/',
-		params={  'business_id': 'FI09704098'},
-		headers=headers
-)
-
-print r.json()
-
-```
-
-```java
-URL obj = new URL("https://api.vainu.io/api/v1/prospects/filter/?business_id=FI09704098");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("GET");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-
-```
-
-```go
-package main
-
-import (
-       "bytes"
-       "net/http"
-)
-
-func main() {
-
-    headers := map[string][]string{
-        "Accept": []string{"application/json"},
-        "API-Key": []string{"API_KEY"},
-        
-    }
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "https://api.vainu.io/api/v1/prospects/filter/", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
 
 ```
 
@@ -3684,7 +2371,24 @@ API-Key, basic
 
 > Code samples
 
+```python
+import requests
+headers = {
+  'Accept': 'application/json', 
+  'API-Key': 'API_KEY'   # replace API_KEY with your api key from Vainu settings 
+} 
+
+r = requests.get('https://api.vainu.io/api/v1/target_groups/',
+	params={},
+	headers=headers
+)
+
+print r.json()
+
+```
+
 ```shell
+
 # You can also use wget
 curl -X GET https://api.vainu.io/api/v1/target_groups/ \
   -H 'Accept: application/json' \
@@ -3692,38 +2396,12 @@ curl -X GET https://api.vainu.io/api/v1/target_groups/ \
 
 ```
 
-```http
-GET https://api.vainu.io/api/v1/target_groups/ HTTP/1.1
-Host: api.vainu.io
-Accept: application/json
-
-```
-
-```javascript
-var headers = {
-  'Accept':'application/json',
-  'API-Key':'API_KEY'
-
-};
-
-$.ajax({
-  url: 'https://api.vainu.io/api/v1/target_groups/',
-  method: 'get',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
-
-```
-
 ```javascript--nodejs
-const fetch = require('node-fetch');
+const fetch = require('node-fetch');  // install node-fetch (npm install node-fetch).
 
 const headers = {
-  'Accept':'application/json',
-  'API-Key':'API_KEY'
+  'Accept':'application/json',  
+  'API-Key':'API_KEY'    // replace API_KEY with your api key from Vainu settings 
 
 };
 
@@ -3738,84 +2416,6 @@ fetch('https://api.vainu.io/api/v1/target_groups/',
 }).then(function(body) {
     console.log(body);
 });
-
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Accept' => 'application/json',
-  'API-Key' => 'API_KEY'
-}
-
-result = RestClient.get 'https://api.vainu.io/api/v1/target_groups/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'API-Key': 'API_KEY'
-}
-# replace 'API_KEY' with your api key from Vainu settings 
-
-r = requests.get('https://api.vainu.io/api/v1/target_groups/',
-		params={},
-		headers=headers
-)
-
-print r.json()
-
-```
-
-```java
-URL obj = new URL("https://api.vainu.io/api/v1/target_groups/");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("GET");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-
-```
-
-```go
-package main
-
-import (
-       "bytes"
-       "net/http"
-)
-
-func main() {
-
-    headers := map[string][]string{
-        "Accept": []string{"application/json"},
-        "API-Key": []string{"API_KEY"},
-        
-    }
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "https://api.vainu.io/api/v1/target_groups/", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
 
 ```
 
@@ -3864,60 +2464,55 @@ API-Key, basic
 
 > Code samples
 
+```python
+import requests
+headers = {
+  'Content-Type': 'application/json', 
+  'Accept': 'application/json', 
+  'API-Key': 'API_KEY'   # replace API_KEY with your api key from Vainu settings 
+} 
+body = {
+  "name": "New Portfolio",
+  "is_named_target_group": true
+}
+r = requests.post('https://api.vainu.io/api/v1/target_groups/',
+	params={},
+	json=body,
+	headers=headers
+)
+
+print r.json()
+
+```
+
 ```shell
+
 # You can also use wget
 curl -X POST https://api.vainu.io/api/v1/target_groups/ \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
-  -H 'API-Key: API_KEY'
-
-```
-
-```http
-POST https://api.vainu.io/api/v1/target_groups/ HTTP/1.1
-Host: api.vainu.io
-Content-Type: application/json
-Accept: application/json
-
-```
-
-```javascript
-var headers = {
-  'Content-Type':'application/json',
-  'Accept':'application/json',
-  'API-Key':'API_KEY'
-
-};
-
-$.ajax({
-  url: 'https://api.vainu.io/api/v1/target_groups/',
-  method: 'post',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
+  -H 'API-Key: API_KEY' \
+  --data '{"name":"New Portfolio","is_named_target_group":"true"}'
 
 ```
 
 ```javascript--nodejs
-const fetch = require('node-fetch');
-const inputBody = '{
+const fetch = require('node-fetch');  // install node-fetch (npm install node-fetch).
+const inputBody = {
   "name": "New Portfolio",
   "is_named_target_group": true
-}';
+};
 const headers = {
-  'Content-Type':'application/json',
-  'Accept':'application/json',
-  'API-Key':'API_KEY'
+  'Content-Type':'application/json',  
+  'Accept':'application/json',  
+  'API-Key':'API_KEY'    // replace API_KEY with your api key from Vainu settings 
 
 };
 
 fetch('https://api.vainu.io/api/v1/target_groups/',
 {
   method: 'POST',
-  body: inputBody,
+  body: JSON.stringify(inputBody),
   headers: headers
 })
 .then(function(res) {
@@ -3925,91 +2520,6 @@ fetch('https://api.vainu.io/api/v1/target_groups/',
 }).then(function(body) {
     console.log(body);
 });
-
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Content-Type' => 'application/json',
-  'Accept' => 'application/json',
-  'API-Key' => 'API_KEY'
-}
-
-result = RestClient.post 'https://api.vainu.io/api/v1/target_groups/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Content-Type': 'application/json',
-  'Accept': 'application/json',
-  'API-Key': 'API_KEY'
-}
-# replace 'API_KEY' with your api key from Vainu settings 
-body = {
-  "name": "New Portfolio",
-  "is_named_target_group": true
-}
-r = requests.post('https://api.vainu.io/api/v1/target_groups/',
-		params={},
-		json=body,
-		headers=headers
-)
-
-print r.json()
-
-```
-
-```java
-URL obj = new URL("https://api.vainu.io/api/v1/target_groups/");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("POST");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-
-```
-
-```go
-package main
-
-import (
-       "bytes"
-       "net/http"
-)
-
-func main() {
-
-    headers := map[string][]string{
-        "Content-Type": []string{"application/json"},
-        "Accept": []string{"application/json"},
-        "API-Key": []string{"API_KEY"},
-        
-    }
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("POST", "https://api.vainu.io/api/v1/target_groups/", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
 
 ```
 
@@ -4065,7 +2575,24 @@ API-Key, basic
 
 > Code samples
 
+```python
+import requests
+headers = {
+  'Accept': 'application/json', 
+  'API-Key': 'API_KEY'   # replace API_KEY with your api key from Vainu settings 
+} 
+
+r = requests.get('https://api.vainu.io/api/v1/target_groups/{target_group_id}',
+	params={},
+	headers=headers
+)
+
+print r.json()
+
+```
+
 ```shell
+
 # You can also use wget
 curl -X GET https://api.vainu.io/api/v1/target_groups/{target_group_id} \
   -H 'Accept: application/json' \
@@ -4073,38 +2600,12 @@ curl -X GET https://api.vainu.io/api/v1/target_groups/{target_group_id} \
 
 ```
 
-```http
-GET https://api.vainu.io/api/v1/target_groups/{target_group_id} HTTP/1.1
-Host: api.vainu.io
-Accept: application/json
-
-```
-
-```javascript
-var headers = {
-  'Accept':'application/json',
-  'API-Key':'API_KEY'
-
-};
-
-$.ajax({
-  url: 'https://api.vainu.io/api/v1/target_groups/{target_group_id}',
-  method: 'get',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
-
-```
-
 ```javascript--nodejs
-const fetch = require('node-fetch');
+const fetch = require('node-fetch');  // install node-fetch (npm install node-fetch).
 
 const headers = {
-  'Accept':'application/json',
-  'API-Key':'API_KEY'
+  'Accept':'application/json',  
+  'API-Key':'API_KEY'    // replace API_KEY with your api key from Vainu settings 
 
 };
 
@@ -4119,84 +2620,6 @@ fetch('https://api.vainu.io/api/v1/target_groups/{target_group_id}',
 }).then(function(body) {
     console.log(body);
 });
-
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Accept' => 'application/json',
-  'API-Key' => 'API_KEY'
-}
-
-result = RestClient.get 'https://api.vainu.io/api/v1/target_groups/{target_group_id}',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'API-Key': 'API_KEY'
-}
-# replace 'API_KEY' with your api key from Vainu settings 
-
-r = requests.get('https://api.vainu.io/api/v1/target_groups/{target_group_id}',
-		params={},
-		headers=headers
-)
-
-print r.json()
-
-```
-
-```java
-URL obj = new URL("https://api.vainu.io/api/v1/target_groups/{target_group_id}");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("GET");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-
-```
-
-```go
-package main
-
-import (
-       "bytes"
-       "net/http"
-)
-
-func main() {
-
-    headers := map[string][]string{
-        "Accept": []string{"application/json"},
-        "API-Key": []string{"API_KEY"},
-        
-    }
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "https://api.vainu.io/api/v1/target_groups/{target_group_id}", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
 
 ```
 
@@ -4243,103 +2666,13 @@ API-Key, basic
 
 > Code samples
 
-```shell
-# You can also use wget
-curl -X PUT https://api.vainu.io/api/v1/target_groups/{target_group_id} \
-  -H 'Content-Type: application/json' \
-  -H 'Accept: application/json' \
-  -H 'API-Key: API_KEY'
-
-```
-
-```http
-PUT https://api.vainu.io/api/v1/target_groups/{target_group_id} HTTP/1.1
-Host: api.vainu.io
-Content-Type: application/json
-Accept: application/json
-
-```
-
-```javascript
-var headers = {
-  'Content-Type':'application/json',
-  'Accept':'application/json',
-  'API-Key':'API_KEY'
-
-};
-
-$.ajax({
-  url: 'https://api.vainu.io/api/v1/target_groups/{target_group_id}',
-  method: 'put',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
-
-```
-
-```javascript--nodejs
-const fetch = require('node-fetch');
-const inputBody = '{
-  "name": "New Portfolio Updated",
-  "business_ids": [
-    "25578642",
-    "01141622"
-  ],
-  "company_names": [
-    "Nokia Solutions and Networks Oy",
-    "UPM-Kymmene Oyj"
-  ]
-}';
-const headers = {
-  'Content-Type':'application/json',
-  'Accept':'application/json',
-  'API-Key':'API_KEY'
-
-};
-
-fetch('https://api.vainu.io/api/v1/target_groups/{target_group_id}',
-{
-  method: 'PUT',
-  body: inputBody,
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Content-Type' => 'application/json',
-  'Accept' => 'application/json',
-  'API-Key' => 'API_KEY'
-}
-
-result = RestClient.put 'https://api.vainu.io/api/v1/target_groups/{target_group_id}',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
-
-```
-
 ```python
 import requests
 headers = {
-  'Content-Type': 'application/json',
-  'Accept': 'application/json',
-  'API-Key': 'API_KEY'
-}
-# replace 'API_KEY' with your api key from Vainu settings 
+  'Content-Type': 'application/json', 
+  'Accept': 'application/json', 
+  'API-Key': 'API_KEY'   # replace API_KEY with your api key from Vainu settings 
+} 
 body = {
   "name": "New Portfolio Updated",
   "business_ids": [
@@ -4352,57 +2685,57 @@ body = {
   ]
 }
 r = requests.put('https://api.vainu.io/api/v1/target_groups/{target_group_id}',
-		params={},
-		json=body,
-		headers=headers
+	params={},
+	json=body,
+	headers=headers
 )
 
 print r.json()
 
 ```
 
-```java
-URL obj = new URL("https://api.vainu.io/api/v1/target_groups/{target_group_id}");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("PUT");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
+```shell
+
+# You can also use wget
+curl -X PUT https://api.vainu.io/api/v1/target_groups/{target_group_id} \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json' \
+  -H 'API-Key: API_KEY' \
+  --data '{"name":"New Portfolio Updated","business_ids":"25578642,01141622","company_names":"Nokia Solutions and Networks Oy,UPM-Kymmene Oyj"}'
 
 ```
 
-```go
-package main
+```javascript--nodejs
+const fetch = require('node-fetch');  // install node-fetch (npm install node-fetch).
+const inputBody = {
+  "name": "New Portfolio Updated",
+  "business_ids": [
+    "25578642",
+    "01141622"
+  ],
+  "company_names": [
+    "Nokia Solutions and Networks Oy",
+    "UPM-Kymmene Oyj"
+  ]
+};
+const headers = {
+  'Content-Type':'application/json',  
+  'Accept':'application/json',  
+  'API-Key':'API_KEY'    // replace API_KEY with your api key from Vainu settings 
 
-import (
-       "bytes"
-       "net/http"
-)
+};
 
-func main() {
-
-    headers := map[string][]string{
-        "Content-Type": []string{"application/json"},
-        "Accept": []string{"application/json"},
-        "API-Key": []string{"API_KEY"},
-        
-    }
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("PUT", "https://api.vainu.io/api/v1/target_groups/{target_group_id}", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
+fetch('https://api.vainu.io/api/v1/target_groups/{target_group_id}',
+{
+  method: 'PUT',
+  body: JSON.stringify(inputBody),
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
 
 ```
 
@@ -4471,7 +2804,24 @@ API-Key, basic
 
 > Code samples
 
+```python
+import requests
+headers = {
+  'Accept': 'application/json', 
+  'API-Key': 'API_KEY'   # replace API_KEY with your api key from Vainu settings 
+} 
+
+r = requests.get('https://api.vainu.io/api/v1/target_group/{target_group_id}/',
+	params={},
+	headers=headers
+)
+
+print r.json()
+
+```
+
 ```shell
+
 # You can also use wget
 curl -X GET https://api.vainu.io/api/v1/target_group/{target_group_id}/ \
   -H 'Accept: application/json' \
@@ -4479,38 +2829,12 @@ curl -X GET https://api.vainu.io/api/v1/target_group/{target_group_id}/ \
 
 ```
 
-```http
-GET https://api.vainu.io/api/v1/target_group/{target_group_id}/ HTTP/1.1
-Host: api.vainu.io
-Accept: application/json
-
-```
-
-```javascript
-var headers = {
-  'Accept':'application/json',
-  'API-Key':'API_KEY'
-
-};
-
-$.ajax({
-  url: 'https://api.vainu.io/api/v1/target_group/{target_group_id}/',
-  method: 'get',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
-
-```
-
 ```javascript--nodejs
-const fetch = require('node-fetch');
+const fetch = require('node-fetch');  // install node-fetch (npm install node-fetch).
 
 const headers = {
-  'Accept':'application/json',
-  'API-Key':'API_KEY'
+  'Accept':'application/json',  
+  'API-Key':'API_KEY'    // replace API_KEY with your api key from Vainu settings 
 
 };
 
@@ -4525,84 +2849,6 @@ fetch('https://api.vainu.io/api/v1/target_group/{target_group_id}/',
 }).then(function(body) {
     console.log(body);
 });
-
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Accept' => 'application/json',
-  'API-Key' => 'API_KEY'
-}
-
-result = RestClient.get 'https://api.vainu.io/api/v1/target_group/{target_group_id}/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'API-Key': 'API_KEY'
-}
-# replace 'API_KEY' with your api key from Vainu settings 
-
-r = requests.get('https://api.vainu.io/api/v1/target_group/{target_group_id}/',
-		params={},
-		headers=headers
-)
-
-print r.json()
-
-```
-
-```java
-URL obj = new URL("https://api.vainu.io/api/v1/target_group/{target_group_id}/");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("GET");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-
-```
-
-```go
-package main
-
-import (
-       "bytes"
-       "net/http"
-)
-
-func main() {
-
-    headers := map[string][]string{
-        "Accept": []string{"application/json"},
-        "API-Key": []string{"API_KEY"},
-        
-    }
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "https://api.vainu.io/api/v1/target_group/{target_group_id}/", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
 
 ```
 
@@ -4680,7 +2926,24 @@ API-Key, basic
 
 > Code samples
 
+```python
+import requests
+headers = {
+  'Accept': 'application/json', 
+  'API-Key': 'API_KEY'   # replace API_KEY with your api key from Vainu settings 
+} 
+
+r = requests.get('https://api.vainu.io/api/v1/target_group/{target_group_id}/leads/',
+	params={},
+	headers=headers
+)
+
+print r.json()
+
+```
+
 ```shell
+
 # You can also use wget
 curl -X GET https://api.vainu.io/api/v1/target_group/{target_group_id}/leads/ \
   -H 'Accept: application/json' \
@@ -4688,38 +2951,12 @@ curl -X GET https://api.vainu.io/api/v1/target_group/{target_group_id}/leads/ \
 
 ```
 
-```http
-GET https://api.vainu.io/api/v1/target_group/{target_group_id}/leads/ HTTP/1.1
-Host: api.vainu.io
-Accept: application/json
-
-```
-
-```javascript
-var headers = {
-  'Accept':'application/json',
-  'API-Key':'API_KEY'
-
-};
-
-$.ajax({
-  url: 'https://api.vainu.io/api/v1/target_group/{target_group_id}/leads/',
-  method: 'get',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
-
-```
-
 ```javascript--nodejs
-const fetch = require('node-fetch');
+const fetch = require('node-fetch');  // install node-fetch (npm install node-fetch).
 
 const headers = {
-  'Accept':'application/json',
-  'API-Key':'API_KEY'
+  'Accept':'application/json',  
+  'API-Key':'API_KEY'    // replace API_KEY with your api key from Vainu settings 
 
 };
 
@@ -4734,84 +2971,6 @@ fetch('https://api.vainu.io/api/v1/target_group/{target_group_id}/leads/',
 }).then(function(body) {
     console.log(body);
 });
-
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Accept' => 'application/json',
-  'API-Key' => 'API_KEY'
-}
-
-result = RestClient.get 'https://api.vainu.io/api/v1/target_group/{target_group_id}/leads/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': 'application/json',
-  'API-Key': 'API_KEY'
-}
-# replace 'API_KEY' with your api key from Vainu settings 
-
-r = requests.get('https://api.vainu.io/api/v1/target_group/{target_group_id}/leads/',
-		params={},
-		headers=headers
-)
-
-print r.json()
-
-```
-
-```java
-URL obj = new URL("https://api.vainu.io/api/v1/target_group/{target_group_id}/leads/");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("GET");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-
-```
-
-```go
-package main
-
-import (
-       "bytes"
-       "net/http"
-)
-
-func main() {
-
-    headers := map[string][]string{
-        "Accept": []string{"application/json"},
-        "API-Key": []string{"API_KEY"},
-        
-    }
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "https://api.vainu.io/api/v1/target_group/{target_group_id}/leads/", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
 
 ```
 
@@ -4900,61 +3059,57 @@ API-Key, basic
 
 > Code samples
 
+```python
+import requests
+headers = {
+  'Content-Type': 'application/json', 
+  'Accept': 'application/json', 
+  'API-Key': 'API_KEY'   # replace API_KEY with your api key from Vainu settings 
+} 
+body = {
+  "company_name": "Rovio Entertainment Oyj",
+  "business_id": null,
+  "country": "FI"
+}
+r = requests.post('https://api.vainu.io/api/v1/enrich_data/',
+	params={},
+	json=body,
+	headers=headers
+)
+
+print r.json()
+
+```
+
 ```shell
+
 # You can also use wget
 curl -X POST https://api.vainu.io/api/v1/enrich_data/ \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
-  -H 'API-Key: API_KEY'
-
-```
-
-```http
-POST https://api.vainu.io/api/v1/enrich_data/ HTTP/1.1
-Host: api.vainu.io
-Content-Type: application/json
-Accept: application/json
-
-```
-
-```javascript
-var headers = {
-  'Content-Type':'application/json',
-  'Accept':'application/json',
-  'API-Key':'API_KEY'
-
-};
-
-$.ajax({
-  url: 'https://api.vainu.io/api/v1/enrich_data/',
-  method: 'post',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
+  -H 'API-Key: API_KEY' \
+  --data '{"company_name":"Rovio Entertainment Oyj","business_id":"null","country":"FI"}'
 
 ```
 
 ```javascript--nodejs
-const fetch = require('node-fetch');
-const inputBody = '{
+const fetch = require('node-fetch');  // install node-fetch (npm install node-fetch).
+const inputBody = {
   "company_name": "Rovio Entertainment Oyj",
-  "business_id": "None",
+  "business_id": null,
   "country": "FI"
-}';
+};
 const headers = {
-  'Content-Type':'application/json',
-  'Accept':'application/json',
-  'API-Key':'API_KEY'
+  'Content-Type':'application/json',  
+  'Accept':'application/json',  
+  'API-Key':'API_KEY'    // replace API_KEY with your api key from Vainu settings 
 
 };
 
 fetch('https://api.vainu.io/api/v1/enrich_data/',
 {
   method: 'POST',
-  body: inputBody,
+  body: JSON.stringify(inputBody),
   headers: headers
 })
 .then(function(res) {
@@ -4962,92 +3117,6 @@ fetch('https://api.vainu.io/api/v1/enrich_data/',
 }).then(function(body) {
     console.log(body);
 });
-
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Content-Type' => 'application/json',
-  'Accept' => 'application/json',
-  'API-Key' => 'API_KEY'
-}
-
-result = RestClient.post 'https://api.vainu.io/api/v1/enrich_data/',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
-
-```
-
-```python
-import requests
-headers = {
-  'Content-Type': 'application/json',
-  'Accept': 'application/json',
-  'API-Key': 'API_KEY'
-}
-# replace 'API_KEY' with your api key from Vainu settings 
-body = {
-  "company_name": "Rovio Entertainment Oyj",
-  "business_id": "None",
-  "country": "FI"
-}
-r = requests.post('https://api.vainu.io/api/v1/enrich_data/',
-		params={},
-		json=body,
-		headers=headers
-)
-
-print r.json()
-
-```
-
-```java
-URL obj = new URL("https://api.vainu.io/api/v1/enrich_data/");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("POST");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-
-```
-
-```go
-package main
-
-import (
-       "bytes"
-       "net/http"
-)
-
-func main() {
-
-    headers := map[string][]string{
-        "Content-Type": []string{"application/json"},
-        "Accept": []string{"application/json"},
-        "API-Key": []string{"API_KEY"},
-        
-    }
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("POST", "https://api.vainu.io/api/v1/enrich_data/", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
 
 ```
 
@@ -5075,7 +3144,7 @@ Include matching parameters in the request body. Note: current implementation re
 ```json
 {
   "company_name": "Rovio Entertainment Oyj",
-  "business_id": "None",
+  "business_id": null,
   "country": "FI"
 }
 ```
@@ -5147,62 +3216,4 @@ Include matching parameters in the request body. Note: current implementation re
 To perform this operation, you must be authenticated by means of one of the following methods:
 API-Key, basic
 </aside>
-
-# Schemas
-
-<h2 id="tocScustomerdata">CustomerData</h2>
-
-<a id="schemacustomerdata"></a>
-
-```json
-{
-  "owner_email": "example@vainu.io",
-  "unique_id": "f39a1a59",
-  "won_deals_count": 2,
-  "open_deals_count": 1,
-  "lost_deals_count": 0,
-  "notes": "string",
-  "last_update": "2018-06-08",
-  "won": true,
-  "origin": "PublicApi",
-  "modified": "2018-06-09T12:30:39.923Z",
-  "created": "2018-06-09T12:20:21.341Z",
-  "prospect_info": {
-    "vid": 463880794,
-    "company_name": "Vainu Finland Oy",
-    "business_id": "2822996-6",
-    "country": "FI",
-    "domain": "vainu.io"
-  },
-  "id": "2b1961522a6e7f19c3e5ac08",
-  "prospect": 463880794
-}
-
-```
-
-### Properties
-
-*allOf*
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|*anonymous*|[#/components/schemas_hide/CustomerDataData](#schema#/components/schemas_hide/customerdatadata)|false|none|none|
-
-*and*
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|*anonymous*|object|false|none|none|
-|» won|boolean|false|none|True if won_deals_count is greater than zero|
-|» origin|string|false|none|none|
-|» modified|string(date-time)|false|none|none|
-|» created|string(date-time)|false|none|none|
-|» prospect_info|object|false|none|none|
-|»» vid|integer|false|none|none|
-|»» company_name|string|false|none|none|
-|»» business_id|string|false|none|none|
-|»» country|string|false|none|none|
-|»» domain|string|false|none|none|
-|» id|string|false|none|none|
-|» prospect|integer|false|none|vid|
 

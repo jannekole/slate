@@ -17,7 +17,7 @@ info:
 
     ## Status codes
 
-    List of status and error codes and their definitions. TAULUKKO TÄMÄKIN, katso scraper/mongo_models/exceptions.py
+    List of status and error codes and their definitions.
 
 
     - `200` – SUCCESS, returns the requested data in JSON format
@@ -76,7 +76,7 @@ info:
 
 
 
-  version: 1.0.0
+  version: 0.0.1
   title: Vainu API
 #  termsOfService: 'http://swagger.io/terms/'
 #  contact:
@@ -1455,7 +1455,7 @@ paths:
                   type: string
               example: {
                 "company_name": "Rovio Entertainment Oyj",
-                "business_id": None,
+                "business_id": null,
                 "country": "FI"
               }
 
