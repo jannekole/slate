@@ -5744,10 +5744,13 @@ curl -X POST https://api.vainu.io/api/v1/enrich_data/ <span class="se">\</span>
 </span></code></pre>
 <p><code>POST /enrich_data/</code></p>
 
-<p>This endpoint allows you to enrich your company data with data from Vainu.
-The endpoint takes in data about a company in the post body, and attempts to find a matching company in the Vainu database.
-If a match is found, all related information about the company is returned.
-If multiple matches are found, a list containing basic information about them and a unique identifier (vid, or Vainu id) is returned. The user then needs to select the correct entity and re-request the endpoint with the company&#39;s unique vid identifier. Note: using the vid in the results always returns a single correct match.</p>
+<p>This endpoint allows you to enrich your company data with data from Vainu.</p>
+
+<p>The endpoint takes in data about a company in the post body, and attempts to find a matching company in the Vainu database.</p>
+
+<p>If a match is found, all related information about the company is returned.</p>
+
+<p>If multiple matches are found, a list containing basic information about them and a unique identifier (vid, or Vainu id) is returned. The user then needs to select the correct entity and re-request the endpoint with the company&#39;s unique vid identifier. Note: using the vid in the results always returns a single correct match.</p>
 <h3 id='matching-parameters'>Matching parameters:</h3>
 <p>Include matching parameters in the request body. Note: current implementation requires that the fields used for matching are correctly named. At least one field marked with an asterisk* is required. These fields include:</p>
 
