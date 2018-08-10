@@ -172,7 +172,7 @@ When user opens a prospect card with associated Customer Data that has unique_id
 
 `https://your.external.service/Entity/123-abc/details`
 
-###  A description of the properties of the objects:
+###  A description of the properties of the event objects:
 - `id` - The unique id of the event. Required
 - `timestamp` - Used to sort the events. Accepts ISO 8601 (string) and unix time (seconds/milliseconds integer). Required
 - `type` - Possible values: email, call, activity, task, meeting, event, case, note, won, lost, open. Sets default values for other properties.
@@ -5053,13 +5053,13 @@ func main() {
 
 `POST /enrich_data/`
 
-This endpoint allows filling or correcting incomplete company data or simply enriching existing data with additional information available in Vainu.
-The user supplies all data related to the company in question available at their end and the endpoint attempts to identify the corresponding company in Vainu's database based on the input data.
-If a match is found all related information about the company is returned.
-If multiple matches are found a list containing basic information about them and an unambiguous identifier (vid, as in Vainu id) is returned. The user then needs to select the correct entity and re-request the endpoint with the company's unique vid identifier. Note: using the vid in the payload is enough for this results in a single correct match without exception.
+This endpoint allows you to enrich your company data with data from Vainu.
+The endpoint takes in data about a company in the post body, and attempts to find a matching company in the Vainu database.
+If a match is found, all related information about the company is returned.
+If multiple matches are found, a list containing basic information about them and a unique identifier (vid, or Vainu id) is returned. The user then needs to select the correct entity and re-request the endpoint with the company's unique vid identifier. Note: using the vid in the results always returns a single correct match.
 
 ### Matching parameters:
-Include matching parameters in the request body. Note: current implementation requires that the fields used for matching are correctly named. These fields include (at least one field marked with an asterisk* is required):
+Include matching parameters in the request body. Note: current implementation requires that the fields used for matching are correctly named. At least one field marked with an asterisk* is required. These fields include:
 
 - company_name*
 - business_id*
