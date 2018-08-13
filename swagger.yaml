@@ -1409,6 +1409,10 @@ paths:
       tags:
         - enrich_data
       description:   >-
+        <aside class="notice">
+          This endpoint is currently under development. Performance improvements and new features will be added.
+        </aside>
+        
         This endpoint allows you to enrich your company data with data from Vainu.
 
 
