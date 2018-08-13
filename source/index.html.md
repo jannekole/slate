@@ -245,7 +245,6 @@ print r.json()
 
 ```shell
 
-# You can also use wget
 curl -X POST https://api.vainu.io/api/v1/customer_data/ \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
@@ -434,7 +433,6 @@ print r.json()
 
 ```shell
 
-# You can also use wget
 curl -X GET https://api.vainu.io/api/v1/customer_data/ \
   -H 'Accept: application/json' \
   -H 'API-Key: API_KEY'
@@ -453,7 +451,6 @@ const headers = {
 fetch('https://api.vainu.io/api/v1/customer_data/',
 {
   method: 'GET',
-
   headers: headers
 })
 .then(function(res) {
@@ -553,7 +550,6 @@ print r.json()
 
 ```shell
 
-# You can also use wget
 curl -X PATCH https://api.vainu.io/api/v1/customer_data/ \
   -H 'Accept: application/json' \
   -H 'API-Key: API_KEY'
@@ -572,7 +568,6 @@ const headers = {
 fetch('https://api.vainu.io/api/v1/customer_data/',
 {
   method: 'PATCH',
-
   headers: headers
 })
 .then(function(res) {
@@ -676,7 +671,6 @@ print r.json()
 
 ```shell
 
-# You can also use wget
 curl -X DELETE https://api.vainu.io/api/v1/customer_data/ \
   -H 'Accept: application/json' \
   -H 'API-Key: API_KEY'
@@ -695,7 +689,6 @@ const headers = {
 fetch('https://api.vainu.io/api/v1/customer_data/',
 {
   method: 'DELETE',
-
   headers: headers
 })
 .then(function(res) {
@@ -778,7 +771,6 @@ print r.json()
 
 ```shell
 
-# You can also use wget
 curl -X GET https://api.vainu.io/api/v1/customer_data/{id}/ \
   -H 'Accept: application/json' \
   -H 'API-Key: API_KEY'
@@ -797,7 +789,6 @@ const headers = {
 fetch('https://api.vainu.io/api/v1/customer_data/{id}/',
 {
   method: 'GET',
-
   headers: headers
 })
 .then(function(res) {
@@ -898,7 +889,6 @@ print r.json()
 
 ```shell
 
-# You can also use wget
 curl -X PATCH https://api.vainu.io/api/v1/customer_data/{id}/ \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
@@ -1027,7 +1017,6 @@ print r.json()
 
 ```shell
 
-# You can also use wget
 curl -X DELETE https://api.vainu.io/api/v1/customer_data/{id}/ \
   -H 'API-Key: API_KEY'
 
@@ -1044,7 +1033,6 @@ const headers = {
 fetch('https://api.vainu.io/api/v1/customer_data/{id}/',
 {
   method: 'DELETE',
-
   headers: headers
 })
 .then(function(res) {
@@ -1103,7 +1091,6 @@ print r.json()
 
 ```shell
 
-# You can also use wget
 curl -X GET https://api.vainu.io/api/v1/async_result/batch-import/{job_id}/ \
   -H 'Accept: application/json' \
   -H 'API-Key: API_KEY'
@@ -1122,7 +1109,6 @@ const headers = {
 fetch('https://api.vainu.io/api/v1/async_result/batch-import/{job_id}/',
 {
   method: 'GET',
-
   headers: headers
 })
 .then(function(res) {
@@ -1289,7 +1275,6 @@ print r.json()
 
 ```shell
 
-# You can also use wget
 curl -X DELETE https://api.vainu.io/api/v1/async_result/batch-import/{job_id}/ \
   -H 'Accept: application/json' \
   -H 'API-Key: API_KEY'
@@ -1308,7 +1293,6 @@ const headers = {
 fetch('https://api.vainu.io/api/v1/async_result/batch-import/{job_id}/',
 {
   method: 'DELETE',
-
   headers: headers
 })
 .then(function(res) {
@@ -1409,7 +1393,6 @@ print r.json()
 
 ```shell
 
-# You can also use wget
 curl -X GET https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/ \
   -H 'Accept: application/json' \
   -H 'API-Key: API_KEY'
@@ -1428,7 +1411,6 @@ const headers = {
 fetch('https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/',
 {
   method: 'GET',
-
   headers: headers
 })
 .then(function(res) {
@@ -1561,7 +1543,6 @@ print r.json()
 
 ```shell
 
-# You can also use wget
 curl -X GET https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/all/ \
   -H 'Accept: application/json' \
   -H 'API-Key: API_KEY'
@@ -1580,7 +1561,6 @@ const headers = {
 fetch('https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/all/',
 {
   method: 'GET',
-
   headers: headers
 })
 .then(function(res) {
@@ -1743,7 +1723,6 @@ print r.json()
 
 ```shell
 
-# You can also use wget
 curl -X GET https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/leads/ \
   -H 'Accept: application/json' \
   -H 'API-Key: API_KEY'
@@ -1762,7 +1741,6 @@ const headers = {
 fetch('https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/leads/',
 {
   method: 'GET',
-
   headers: headers
 })
 .then(function(res) {
@@ -1880,7 +1858,6 @@ print r.json()
 
 ```shell
 
-# You can also use wget
 curl -X GET https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/contacts/ \
   -H 'Accept: application/json' \
   -H 'API-Key: API_KEY'
@@ -1899,7 +1876,6 @@ const headers = {
 fetch('https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/contacts/',
 {
   method: 'GET',
-
   headers: headers
 })
 .then(function(res) {
@@ -1984,7 +1960,6 @@ print r.json()
 
 ```shell
 
-# You can also use wget
 curl -X GET https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/financial_statements/ \
   -H 'Accept: application/json' \
   -H 'API-Key: API_KEY'
@@ -2003,7 +1978,6 @@ const headers = {
 fetch('https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/financial_statements/',
 {
   method: 'GET',
-
   headers: headers
 })
 .then(function(res) {
@@ -2102,7 +2076,6 @@ print r.json()
 
 ```shell
 
-# You can also use wget
 curl -X GET https://api.vainu.io/api/v1/prospects/filter/?business_id=FI09704098 \
   -H 'Accept: application/json' \
   -H 'API-Key: API_KEY'
@@ -2121,7 +2094,6 @@ const headers = {
 fetch('https://api.vainu.io/api/v1/prospects/filter/?business_id=FI09704098',
 {
   method: 'GET',
-
   headers: headers
 })
 .then(function(res) {
@@ -2389,7 +2361,6 @@ print r.json()
 
 ```shell
 
-# You can also use wget
 curl -X GET https://api.vainu.io/api/v1/target_groups/ \
   -H 'Accept: application/json' \
   -H 'API-Key: API_KEY'
@@ -2408,7 +2379,6 @@ const headers = {
 fetch('https://api.vainu.io/api/v1/target_groups/',
 {
   method: 'GET',
-
   headers: headers
 })
 .then(function(res) {
@@ -2487,7 +2457,6 @@ print r.json()
 
 ```shell
 
-# You can also use wget
 curl -X POST https://api.vainu.io/api/v1/target_groups/ \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
@@ -2593,7 +2562,6 @@ print r.json()
 
 ```shell
 
-# You can also use wget
 curl -X GET https://api.vainu.io/api/v1/target_groups/{target_group_id} \
   -H 'Accept: application/json' \
   -H 'API-Key: API_KEY'
@@ -2612,7 +2580,6 @@ const headers = {
 fetch('https://api.vainu.io/api/v1/target_groups/{target_group_id}',
 {
   method: 'GET',
-
   headers: headers
 })
 .then(function(res) {
@@ -2696,7 +2663,6 @@ print r.json()
 
 ```shell
 
-# You can also use wget
 curl -X PUT https://api.vainu.io/api/v1/target_groups/{target_group_id} \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
@@ -2822,7 +2788,6 @@ print r.json()
 
 ```shell
 
-# You can also use wget
 curl -X GET https://api.vainu.io/api/v1/target_group/{target_group_id}/ \
   -H 'Accept: application/json' \
   -H 'API-Key: API_KEY'
@@ -2841,7 +2806,6 @@ const headers = {
 fetch('https://api.vainu.io/api/v1/target_group/{target_group_id}/',
 {
   method: 'GET',
-
   headers: headers
 })
 .then(function(res) {
@@ -2944,7 +2908,6 @@ print r.json()
 
 ```shell
 
-# You can also use wget
 curl -X GET https://api.vainu.io/api/v1/target_group/{target_group_id}/leads/ \
   -H 'Accept: application/json' \
   -H 'API-Key: API_KEY'
@@ -2963,7 +2926,6 @@ const headers = {
 fetch('https://api.vainu.io/api/v1/target_group/{target_group_id}/leads/',
 {
   method: 'GET',
-
   headers: headers
 })
 .then(function(res) {
@@ -3083,7 +3045,6 @@ print r.json()
 
 ```shell
 
-# You can also use wget
 curl -X POST https://api.vainu.io/api/v1/enrich_data/ \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
@@ -3122,6 +3083,9 @@ fetch('https://api.vainu.io/api/v1/enrich_data/',
 
 `POST /enrich_data/`
 
+<aside class="notice">
+  This endpoint is currently under development. Performance improvements and new features will be added.
+</aside>
 This endpoint allows you to enrich your company data with data from Vainu.
 
 The endpoint takes in data about a company in the post body, and attempts to find a matching company in the Vainu database.
