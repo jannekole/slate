@@ -16,9 +16,7 @@ headingLevel: 2
 
 > Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
 
-# Overview
-
-### Vainu API enables user to integrate Vainu’s prospect information and leads to their CRM or other services.
+Vainu API enables users to integrate Vainu’s prospect information and leads to their CRM or other services.
 
 ## Datetime format
 All datetime values are in [ISO8601 format](https://en.wikipedia.org/wiki/ISO_8601).
@@ -254,7 +252,7 @@ curl -X POST https://api.vainu.io/api/v1/customer_data/ \
 ```
 
 ```javascript--nodejs
-const fetch = require('node-fetch');  // install node-fetch (npm install node-fetch).
+const fetch = require('node-fetch');  // install node-fetch if not installed (npm install node-fetch).
 const inputBody = {
   "owner_email": "example@vainu.io",
   "unique_id": "f39a1a59",
@@ -329,8 +327,8 @@ If the given parameters return multiple matches, an error is returned that inclu
 If matching with one or more of the returned prospects is desired, it is recommended to use the given `vid` s to send more requests.
 
 ### Create multiple customer_data object with one asynchronous request:
-Initiating the creation of multiple customer_data object is done in the same way as for single customer_data object, but instead of a single object, the request body should include an array of the same objects as when creating single customer_data object.
-The response does not include the results, but an object with a link, and by sending a GET request to the given address returns the results that have been completed so far and the state of the process. See GET /async_result/batch-import/{job_id}/
+Initiating the creation of multiple customer_data object is done in the same way as for single customer_data object, but instead of a single object, the request body should include an array of the same objects as when creating a single customer_data object.
+The response does not include the results, but an object with a link, and sending a GET request to the given address returns the results that have been completed so far and the state of the process. See GET /async_result/batch-import/{job_id}/
 Only one process is allowed at a time. If you need to stop a previous process, see DELETE /async_result/batch-import/{job_id}/
 
 > Body parameter
@@ -440,7 +438,7 @@ curl -X GET https://api.vainu.io/api/v1/customer_data/ \
 ```
 
 ```javascript--nodejs
-const fetch = require('node-fetch');  // install node-fetch (npm install node-fetch).
+const fetch = require('node-fetch');  // install node-fetch if not installed (npm install node-fetch).
 
 const headers = {
   'Accept':'application/json',  
@@ -557,7 +555,7 @@ curl -X PATCH https://api.vainu.io/api/v1/customer_data/ \
 ```
 
 ```javascript--nodejs
-const fetch = require('node-fetch');  // install node-fetch (npm install node-fetch).
+const fetch = require('node-fetch');  // install node-fetch if not installed (npm install node-fetch).
 
 const headers = {
   'Accept':'application/json',  
@@ -678,7 +676,7 @@ curl -X DELETE https://api.vainu.io/api/v1/customer_data/ \
 ```
 
 ```javascript--nodejs
-const fetch = require('node-fetch');  // install node-fetch (npm install node-fetch).
+const fetch = require('node-fetch');  // install node-fetch if not installed (npm install node-fetch).
 
 const headers = {
   'Accept':'application/json',  
@@ -778,7 +776,7 @@ curl -X GET https://api.vainu.io/api/v1/customer_data/{id}/ \
 ```
 
 ```javascript--nodejs
-const fetch = require('node-fetch');  // install node-fetch (npm install node-fetch).
+const fetch = require('node-fetch');  // install node-fetch if not installed (npm install node-fetch).
 
 const headers = {
   'Accept':'application/json',  
@@ -898,7 +896,7 @@ curl -X PATCH https://api.vainu.io/api/v1/customer_data/{id}/ \
 ```
 
 ```javascript--nodejs
-const fetch = require('node-fetch');  // install node-fetch (npm install node-fetch).
+const fetch = require('node-fetch');  // install node-fetch if not installed (npm install node-fetch).
 const inputBody = {
   "owner_email": "example@vainu.io",
   "unique_id": "f39a1a59",
@@ -1023,7 +1021,7 @@ curl -X DELETE https://api.vainu.io/api/v1/customer_data/{id}/ \
 ```
 
 ```javascript--nodejs
-const fetch = require('node-fetch');  // install node-fetch (npm install node-fetch).
+const fetch = require('node-fetch');  // install node-fetch if not installed (npm install node-fetch).
 
 const headers = {
   'API-Key':'API_KEY'    // replace API_KEY with your api key from Vainu settings 
@@ -1098,7 +1096,7 @@ curl -X GET https://api.vainu.io/api/v1/async_result/batch-import/{job_id}/ \
 ```
 
 ```javascript--nodejs
-const fetch = require('node-fetch');  // install node-fetch (npm install node-fetch).
+const fetch = require('node-fetch');  // install node-fetch if not installed (npm install node-fetch).
 
 const headers = {
   'Accept':'application/json',  
@@ -1216,37 +1214,27 @@ The response includes the results (with possible error codes) that have been com
 }
 ```
 
-```xml
-<?xml version="1.0" encoding="UTF-8" ?>
-<CustomerData>
-  <owner_email>example@vainu.io</owner_email>
-  <unique_id>f39a1a59</unique_id>
-  <won_deals_count>2</won_deals_count>
-  <open_deals_count>1</open_deals_count>
-  <lost_deals_count>0</lost_deals_count>
-  <notes>string</notes>
-  <last_update>2018-06-08</last_update>
-  <won>true</won>
-  <origin>PublicApi</origin>
-  <modified>2018-06-09T12:30:39.923Z</modified>
-  <created>2018-06-09T12:20:21.341Z</created>
-  <prospect_info>
-    <vid>463880794</vid>
-    <company_name>Vainu Finland Oy</company_name>
-    <business_id>2822996-6</business_id>
-    <country>FI</country>
-    <domain>vainu.io</domain>
-  </prospect_info>
-  <id>2b1961522a6e7f19c3e5ac08</id>
-  <prospect>463880794</prospect>
-</CustomerData>
-```
-
 <h3 id="poll-the-status-of-an-asynchronous-task-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[CustomerData](#schemacustomerdata)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|Inline|
+
+<h3 id="poll-the-status-of-an-asynchronous-task-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» job_id|string|false|none|none|
+|» results|[object]|false|none|An array describing the results that have been completed. Includes the same error codes as when creating single objects.|
+|»» error|string|false|none|none|
+|»» id|string|false|none|none|
+|»» success|boolean|false|none|none|
+|» state|string|false|none|none|
+|» link|string|false|none|none|
+|» duration|string|false|none|none|
+|» progress|integer|false|none|percent completed|
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -1282,7 +1270,7 @@ curl -X DELETE https://api.vainu.io/api/v1/async_result/batch-import/{job_id}/ \
 ```
 
 ```javascript--nodejs
-const fetch = require('node-fetch');  // install node-fetch (npm install node-fetch).
+const fetch = require('node-fetch');  // install node-fetch if not installed (npm install node-fetch).
 
 const headers = {
   'Accept':'application/json',  
@@ -1400,7 +1388,7 @@ curl -X GET https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/ \
 ```
 
 ```javascript--nodejs
-const fetch = require('node-fetch');  // install node-fetch (npm install node-fetch).
+const fetch = require('node-fetch');  // install node-fetch if not installed (npm install node-fetch).
 
 const headers = {
   'Accept':'application/json',  
@@ -1550,7 +1538,7 @@ curl -X GET https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/all/
 ```
 
 ```javascript--nodejs
-const fetch = require('node-fetch');  // install node-fetch (npm install node-fetch).
+const fetch = require('node-fetch');  // install node-fetch if not installed (npm install node-fetch).
 
 const headers = {
   'Accept':'application/json',  
@@ -1730,7 +1718,7 @@ curl -X GET https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/lead
 ```
 
 ```javascript--nodejs
-const fetch = require('node-fetch');  // install node-fetch (npm install node-fetch).
+const fetch = require('node-fetch');  // install node-fetch if not installed (npm install node-fetch).
 
 const headers = {
   'Accept':'application/json',  
@@ -1865,7 +1853,7 @@ curl -X GET https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/cont
 ```
 
 ```javascript--nodejs
-const fetch = require('node-fetch');  // install node-fetch (npm install node-fetch).
+const fetch = require('node-fetch');  // install node-fetch if not installed (npm install node-fetch).
 
 const headers = {
   'Accept':'application/json',  
@@ -1967,7 +1955,7 @@ curl -X GET https://api.vainu.io/api/v1/prospect/{BUSINESS_ID_without_dash}/fina
 ```
 
 ```javascript--nodejs
-const fetch = require('node-fetch');  // install node-fetch (npm install node-fetch).
+const fetch = require('node-fetch');  // install node-fetch if not installed (npm install node-fetch).
 
 const headers = {
   'Accept':'application/json',  
@@ -2083,7 +2071,7 @@ curl -X GET https://api.vainu.io/api/v1/prospects/filter/?business_id=FI09704098
 ```
 
 ```javascript--nodejs
-const fetch = require('node-fetch');  // install node-fetch (npm install node-fetch).
+const fetch = require('node-fetch');  // install node-fetch if not installed (npm install node-fetch).
 
 const headers = {
   'Accept':'application/json',  
@@ -2368,7 +2356,7 @@ curl -X GET https://api.vainu.io/api/v1/target_groups/ \
 ```
 
 ```javascript--nodejs
-const fetch = require('node-fetch');  // install node-fetch (npm install node-fetch).
+const fetch = require('node-fetch');  // install node-fetch if not installed (npm install node-fetch).
 
 const headers = {
   'Accept':'application/json',  
@@ -2466,7 +2454,7 @@ curl -X POST https://api.vainu.io/api/v1/target_groups/ \
 ```
 
 ```javascript--nodejs
-const fetch = require('node-fetch');  // install node-fetch (npm install node-fetch).
+const fetch = require('node-fetch');  // install node-fetch if not installed (npm install node-fetch).
 const inputBody = {
   "name": "New Portfolio",
   "is_named_target_group": true
@@ -2569,7 +2557,7 @@ curl -X GET https://api.vainu.io/api/v1/target_groups/{target_group_id} \
 ```
 
 ```javascript--nodejs
-const fetch = require('node-fetch');  // install node-fetch (npm install node-fetch).
+const fetch = require('node-fetch');  // install node-fetch if not installed (npm install node-fetch).
 
 const headers = {
   'Accept':'application/json',  
@@ -2672,7 +2660,7 @@ curl -X PUT https://api.vainu.io/api/v1/target_groups/{target_group_id} \
 ```
 
 ```javascript--nodejs
-const fetch = require('node-fetch');  // install node-fetch (npm install node-fetch).
+const fetch = require('node-fetch');  // install node-fetch if not installed (npm install node-fetch).
 const inputBody = {
   "name": "New Portfolio Updated",
   "business_ids": [
@@ -2795,7 +2783,7 @@ curl -X GET https://api.vainu.io/api/v1/target_group/{target_group_id}/ \
 ```
 
 ```javascript--nodejs
-const fetch = require('node-fetch');  // install node-fetch (npm install node-fetch).
+const fetch = require('node-fetch');  // install node-fetch if not installed (npm install node-fetch).
 
 const headers = {
   'Accept':'application/json',  
@@ -2915,7 +2903,7 @@ curl -X GET https://api.vainu.io/api/v1/target_group/{target_group_id}/leads/ \
 ```
 
 ```javascript--nodejs
-const fetch = require('node-fetch');  // install node-fetch (npm install node-fetch).
+const fetch = require('node-fetch');  // install node-fetch if not installed (npm install node-fetch).
 
 const headers = {
   'Accept':'application/json',  
@@ -3054,7 +3042,7 @@ curl -X POST https://api.vainu.io/api/v1/enrich_data/ \
 ```
 
 ```javascript--nodejs
-const fetch = require('node-fetch');  // install node-fetch (npm install node-fetch).
+const fetch = require('node-fetch');  // install node-fetch if not installed (npm install node-fetch).
 const inputBody = {
   "company_name": "Rovio Entertainment Oyj",
   "business_id": null,
