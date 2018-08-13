@@ -1,10 +1,8 @@
 openapi: '3.0.0'
 info:
   description: >-
-    # Overview
+    Vainu API enables users to integrate Vainu’s prospect information and leads to their CRM or other services.
 
-
-    ### Vainu API enables user to integrate Vainu’s prospect information and leads to their CRM or other services.
 
 
 
@@ -387,9 +385,9 @@ paths:
 
         ### Create multiple customer_data object with one asynchronous request:
 
-        Initiating the creation of multiple customer_data object is done in the same way as for single customer_data object, but instead of a single object, the request body should include an array of the same objects as when creating single customer_data object.
+        Initiating the creation of multiple customer_data object is done in the same way as for single customer_data object, but instead of a single object, the request body should include an array of the same objects as when creating a single customer_data object.
 
-        The response does not include the results, but an object with a link, and by sending a GET request to the given address returns the results that have been completed so far and the state of the process. See GET /async_result/batch-import/{job_id}/
+        The response does not include the results, but an object with a link, and sending a GET request to the given address returns the results that have been completed so far and the state of the process. See GET /async_result/batch-import/{job_id}/
 
         Only one process is allowed at a time. If you need to stop a previous process, see DELETE /async_result/batch-import/{job_id}/
 
@@ -656,9 +654,6 @@ paths:
                     {"job_id":"2096be0a-817d-40b6-b743-cff45f777c21","created":"2018-06-15T11:47:39.479000","results":[{"match_parameters":{"exact_name":"Vainu Finland Oy"},"matched_prospect":{"country":"FI","domain":"vainu.io","company_name":"Vainu Finland Oy","vid":463880794,"business_id":"28229966"},"id":"5b237d31d3fee90010d1b1d4","success":true,"error":null},{"success":false,"matched_prospect":null,"existing_id":"5b237d31d3fee90010d1b1d4","match_parameters":{"exact_name":"Vainu Finland Oy"},"error":"MATCH_ALREADY_EXISTS","id":null},{"match_parameters":{"business_id":"324-123"},"matched_prospect":null,"id":null,"success":false,"error":"INVALID_BUSINESSID"},{"max_number_of_matches_shown":100,"success":false,"matched_prospect":null,"match_parameters":{"normalize_name":"vainu"},"possible_matches":[{"country":"US","domain":null,"company_name":"VAINU INC.","vid":605731521,"business_id":"US_DE6240535"},{"country":"FI","domain":"vainu.io","company_name":"Vainu Finland Oy","vid":463880794,"business_id":"28229966"},{"country":"US","domain":"vainu.io","company_name":"VAINU INC.","vid":339608722,"business_id":"US_NY5058589"}],"number_of_matches":3,"error":"MULTIPLE_POSSIBLE_MATCHES","id":null}],"state":"completed","link":"https:\/\/api.vainu.io\/api\/v1\/async_result\/batch-import\/2096be0a-817d-40b6-b743-cff45f777c21\/","duration":"7.14","progress":100}
                     # request to get example: [{"exact_name": "Vainu Finland Oy"},{"exact_name": "Vainu Finland Oy"},{"business_id": "324-123"},{"normalize_name": "vainu"}]
 
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/CustomerData'
     delete:
       tags:
         - async_result
@@ -1412,7 +1407,7 @@ paths:
         <aside class="notice">
           This endpoint is currently under development. Performance improvements and new features will be added.
         </aside>
-        
+
         This endpoint allows you to enrich your company data with data from Vainu.
 
 

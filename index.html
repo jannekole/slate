@@ -222,13 +222,7 @@
       <ul id="toc" class="toc-list-h1">
           <li>
             <a href="#Vainu-API" class="toc-h1 toc-link" data-title="Vainu API v0.0.1">Vainu API v0.0.1</a>
-          </li>
-          <li>
-            <a href="#overview" class="toc-h1 toc-link" data-title="Overview">Overview</a>
               <ul class="toc-list-h2">
-                  <li>
-                    <a href="#vainu-api-enables-user-to-integrate-vainu-s-prospect-information-and-leads-to-their-crm-or-other-services" class="toc-h2 toc-link" data-title="Vainu API enables user to integrate Vainu’s prospect information and leads to their CRM or other services.">Vainu API enables user to integrate Vainu’s prospect information and leads to their CRM or other services.</a>
-                  </li>
                   <li>
                     <a href="#datetime-format" class="toc-h2 toc-link" data-title="Datetime format">Datetime format</a>
                   </li>
@@ -367,7 +361,9 @@
 <blockquote>
 <p>Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.</p>
 </blockquote>
-<h1 id='overview'>Overview</h1><h3 id='vainu-api-enables-user-to-integrate-vainu-s-prospect-information-and-leads-to-their-crm-or-other-services'>Vainu API enables user to integrate Vainu’s prospect information and leads to their CRM or other services.</h3><h2 id='datetime-format'>Datetime format</h2>
+
+<p>Vainu API enables users to integrate Vainu’s prospect information and leads to their CRM or other services.</p>
+<h2 id='datetime-format'>Datetime format</h2>
 <p>All datetime values are in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO8601 format</a>.</p>
 <h2 id='status-codes'>Status codes</h2>
 <p>List of status and error codes and their definitions.</p>
@@ -579,7 +575,7 @@ curl -X POST https://api.vainu.io/api/v1/customer_data/ <span class="se">\</span
   -H <span class="s1">'API-Key: API_KEY'</span> <span class="se">\</span>
   --data <span class="s1">'{"owner_email":"example@vainu.io","unique_id":"f39a1a59","won_deals_count":"2","open_deals_count":"1","lost_deals_count":"0","notes":"string","last_update":"2018-06-08","vid":"463880794","exact_name":"Vainu Finland Oy","normalize_name":"vainu","business_id":"2822996-6","country":"FI"}'</span>
 
-</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>  <span class="c1">// install node-fetch (npm install node-fetch).</span>
+</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>  <span class="c1">// install node-fetch if not installed (npm install node-fetch).</span>
 <span class="kr">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s2">"owner_email"</span><span class="p">:</span> <span class="s2">"example@vainu.io"</span><span class="p">,</span>
   <span class="s2">"unique_id"</span><span class="p">:</span> <span class="s2">"f39a1a59"</span><span class="p">,</span>
@@ -651,8 +647,8 @@ Additional parameters can be given to narrow down the number of possible matches
 <p>If the given parameters return multiple matches, an error is returned that includes a list of possible matches.
 If matching with one or more of the returned prospects is desired, it is recommended to use the given <code>vid</code> s to send more requests.</p>
 <h3 id='create-multiple-customer_data-object-with-one-asynchronous-request'>Create multiple customer_data object with one asynchronous request:</h3>
-<p>Initiating the creation of multiple customer_data object is done in the same way as for single customer_data object, but instead of a single object, the request body should include an array of the same objects as when creating single customer_data object.
-The response does not include the results, but an object with a link, and by sending a GET request to the given address returns the results that have been completed so far and the state of the process. See GET /async_result/batch-import/{job_id}/
+<p>Initiating the creation of multiple customer_data object is done in the same way as for single customer_data object, but instead of a single object, the request body should include an array of the same objects as when creating a single customer_data object.
+The response does not include the results, but an object with a link, and sending a GET request to the given address returns the results that have been completed so far and the state of the process. See GET /async_result/batch-import/{job_id}/
 Only one process is allowed at a time. If you need to stop a previous process, see DELETE /async_result/batch-import/{job_id}/</p>
 
 <blockquote>
@@ -823,7 +819,7 @@ curl -X GET https://api.vainu.io/api/v1/customer_data/ <span class="se">\</span>
   -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'API-Key: API_KEY'</span>
 
-</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>  <span class="c1">// install node-fetch (npm install node-fetch).</span>
+</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>  <span class="c1">// install node-fetch if not installed (npm install node-fetch).</span>
 
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>  
@@ -1003,7 +999,7 @@ curl -X PATCH https://api.vainu.io/api/v1/customer_data/ <span class="se">\</spa
   -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'API-Key: API_KEY'</span>
 
-</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>  <span class="c1">// install node-fetch (npm install node-fetch).</span>
+</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>  <span class="c1">// install node-fetch if not installed (npm install node-fetch).</span>
 
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>  
@@ -1186,7 +1182,7 @@ curl -X DELETE https://api.vainu.io/api/v1/customer_data/ <span class="se">\</sp
   -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'API-Key: API_KEY'</span>
 
-</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>  <span class="c1">// install node-fetch (npm install node-fetch).</span>
+</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>  <span class="c1">// install node-fetch if not installed (npm install node-fetch).</span>
 
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>  
@@ -1362,7 +1358,7 @@ curl -X GET https://api.vainu.io/api/v1/customer_data/<span class="o">{</span>id
   -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'API-Key: API_KEY'</span>
 
-</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>  <span class="c1">// install node-fetch (npm install node-fetch).</span>
+</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>  <span class="c1">// install node-fetch if not installed (npm install node-fetch).</span>
 
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>  
@@ -1503,7 +1499,7 @@ curl -X PATCH https://api.vainu.io/api/v1/customer_data/<span class="o">{</span>
   -H <span class="s1">'API-Key: API_KEY'</span> <span class="se">\</span>
   --data <span class="s1">'{"owner_email":"example@vainu.io","unique_id":"f39a1a59","won_deals_count":"2","open_deals_count":"1","lost_deals_count":"0","notes":"string","last_update":"2018-06-08","vid":"463880794","exact_name":"Vainu Finland Oy","normalize_name":"vainu","business_id":"2822996-6","country":"FI"}'</span>
 
-</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>  <span class="c1">// install node-fetch (npm install node-fetch).</span>
+</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>  <span class="c1">// install node-fetch if not installed (npm install node-fetch).</span>
 <span class="kr">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s2">"owner_email"</span><span class="p">:</span> <span class="s2">"example@vainu.io"</span><span class="p">,</span>
   <span class="s2">"unique_id"</span><span class="p">:</span> <span class="s2">"f39a1a59"</span><span class="p">,</span>
@@ -1684,7 +1680,7 @@ API-Key, basic
 curl -X DELETE https://api.vainu.io/api/v1/customer_data/<span class="o">{</span>id<span class="o">}</span>/ <span class="se">\</span>
   -H <span class="s1">'API-Key: API_KEY'</span>
 
-</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>  <span class="c1">// install node-fetch (npm install node-fetch).</span>
+</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>  <span class="c1">// install node-fetch if not installed (npm install node-fetch).</span>
 
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'API-Key'</span><span class="p">:</span><span class="s1">'API_KEY'</span>    <span class="c1">// replace API_KEY with your api key from Vainu settings </span>
@@ -1781,7 +1777,7 @@ curl -X GET https://api.vainu.io/api/v1/async_result/batch-import/<span class="o
   -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'API-Key: API_KEY'</span>
 
-</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>  <span class="c1">// install node-fetch (npm install node-fetch).</span>
+</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>  <span class="c1">// install node-fetch if not installed (npm install node-fetch).</span>
 
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>  
@@ -1910,30 +1906,7 @@ curl -X GET https://api.vainu.io/api/v1/async_result/batch-import/<span class="o
   </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7.14"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"progress"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><pre class="highlight xml tab-xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span>
-<span class="nt">&lt;CustomerData&gt;</span>
-  <span class="nt">&lt;owner_email&gt;</span>example@vainu.io<span class="nt">&lt;/owner_email&gt;</span>
-  <span class="nt">&lt;unique_id&gt;</span>f39a1a59<span class="nt">&lt;/unique_id&gt;</span>
-  <span class="nt">&lt;won_deals_count&gt;</span>2<span class="nt">&lt;/won_deals_count&gt;</span>
-  <span class="nt">&lt;open_deals_count&gt;</span>1<span class="nt">&lt;/open_deals_count&gt;</span>
-  <span class="nt">&lt;lost_deals_count&gt;</span>0<span class="nt">&lt;/lost_deals_count&gt;</span>
-  <span class="nt">&lt;notes&gt;</span>string<span class="nt">&lt;/notes&gt;</span>
-  <span class="nt">&lt;last_update&gt;</span>2018-06-08<span class="nt">&lt;/last_update&gt;</span>
-  <span class="nt">&lt;won&gt;</span>true<span class="nt">&lt;/won&gt;</span>
-  <span class="nt">&lt;origin&gt;</span>PublicApi<span class="nt">&lt;/origin&gt;</span>
-  <span class="nt">&lt;modified&gt;</span>2018-06-09T12:30:39.923Z<span class="nt">&lt;/modified&gt;</span>
-  <span class="nt">&lt;created&gt;</span>2018-06-09T12:20:21.341Z<span class="nt">&lt;/created&gt;</span>
-  <span class="nt">&lt;prospect_info&gt;</span>
-    <span class="nt">&lt;vid&gt;</span>463880794<span class="nt">&lt;/vid&gt;</span>
-    <span class="nt">&lt;company_name&gt;</span>Vainu Finland Oy<span class="nt">&lt;/company_name&gt;</span>
-    <span class="nt">&lt;business_id&gt;</span>2822996-6<span class="nt">&lt;/business_id&gt;</span>
-    <span class="nt">&lt;country&gt;</span>FI<span class="nt">&lt;/country&gt;</span>
-    <span class="nt">&lt;domain&gt;</span>vainu.io<span class="nt">&lt;/domain&gt;</span>
-  <span class="nt">&lt;/prospect_info&gt;</span>
-  <span class="nt">&lt;id&gt;</span>2b1961522a6e7f19c3e5ac08<span class="nt">&lt;/id&gt;</span>
-  <span class="nt">&lt;prospect&gt;</span>463880794<span class="nt">&lt;/prospect&gt;</span>
-<span class="nt">&lt;/CustomerData&gt;</span>
-</code></pre>
+</span></code></pre>
 <h3 id="poll-the-status-of-an-asynchronous-task-responses">Responses</h3>
 
 <table><thead>
@@ -1948,7 +1921,85 @@ curl -X GET https://api.vainu.io/api/v1/async_result/batch-import/<span class="o
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>OK</td>
-<td><a href="#schemacustomerdata">CustomerData</a></td>
+<td>Inline</td>
+</tr>
+</tbody></table>
+
+<h3 id="poll-the-status-of-an-asynchronous-task-responseschema">Response Schema</h3>
+
+<p>Status Code <strong>200</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>» job_id</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» results</td>
+<td>[object]</td>
+<td>false</td>
+<td>none</td>
+<td>An array describing the results that have been completed. Includes the same error codes as when creating single objects.</td>
+</tr>
+<tr>
+<td>»» error</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» id</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» success</td>
+<td>boolean</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» state</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» link</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» duration</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» progress</td>
+<td>integer</td>
+<td>false</td>
+<td>none</td>
+<td>percent completed</td>
 </tr>
 </tbody></table>
 
@@ -1978,7 +2029,7 @@ curl -X DELETE https://api.vainu.io/api/v1/async_result/batch-import/<span class
   -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'API-Key: API_KEY'</span>
 
-</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>  <span class="c1">// install node-fetch (npm install node-fetch).</span>
+</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>  <span class="c1">// install node-fetch if not installed (npm install node-fetch).</span>
 
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>  
@@ -2112,7 +2163,7 @@ curl -X GET https://api.vainu.io/api/v1/prospect/<span class="o">{</span>BUSINES
   -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'API-Key: API_KEY'</span>
 
-</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>  <span class="c1">// install node-fetch (npm install node-fetch).</span>
+</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>  <span class="c1">// install node-fetch if not installed (npm install node-fetch).</span>
 
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>  
@@ -2283,7 +2334,7 @@ curl -X GET https://api.vainu.io/api/v1/prospect/<span class="o">{</span>BUSINES
   -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'API-Key: API_KEY'</span>
 
-</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>  <span class="c1">// install node-fetch (npm install node-fetch).</span>
+</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>  <span class="c1">// install node-fetch if not installed (npm install node-fetch).</span>
 
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>  
@@ -2484,7 +2535,7 @@ curl -X GET https://api.vainu.io/api/v1/prospect/<span class="o">{</span>BUSINES
   -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'API-Key: API_KEY'</span>
 
-</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>  <span class="c1">// install node-fetch (npm install node-fetch).</span>
+</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>  <span class="c1">// install node-fetch if not installed (npm install node-fetch).</span>
 
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>  
@@ -2640,7 +2691,7 @@ curl -X GET https://api.vainu.io/api/v1/prospect/<span class="o">{</span>BUSINES
   -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'API-Key: API_KEY'</span>
 
-</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>  <span class="c1">// install node-fetch (npm install node-fetch).</span>
+</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>  <span class="c1">// install node-fetch if not installed (npm install node-fetch).</span>
 
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>  
@@ -2763,7 +2814,7 @@ curl -X GET https://api.vainu.io/api/v1/prospect/<span class="o">{</span>BUSINES
   -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'API-Key: API_KEY'</span>
 
-</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>  <span class="c1">// install node-fetch (npm install node-fetch).</span>
+</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>  <span class="c1">// install node-fetch if not installed (npm install node-fetch).</span>
 
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>  
@@ -2900,7 +2951,7 @@ curl -X GET https://api.vainu.io/api/v1/prospects/filter/?business_id<span class
   -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'API-Key: API_KEY'</span>
 
-</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>  <span class="c1">// install node-fetch (npm install node-fetch).</span>
+</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>  <span class="c1">// install node-fetch if not installed (npm install node-fetch).</span>
 
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>  
@@ -3240,7 +3291,7 @@ curl -X GET https://api.vainu.io/api/v1/target_groups/ <span class="se">\</span>
   -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'API-Key: API_KEY'</span>
 
-</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>  <span class="c1">// install node-fetch (npm install node-fetch).</span>
+</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>  <span class="c1">// install node-fetch if not installed (npm install node-fetch).</span>
 
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>  
@@ -3345,7 +3396,7 @@ curl -X POST https://api.vainu.io/api/v1/target_groups/ <span class="se">\</span
   -H <span class="s1">'API-Key: API_KEY'</span> <span class="se">\</span>
   --data <span class="s1">'{"name":"New Portfolio","is_named_target_group":"true"}'</span>
 
-</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>  <span class="c1">// install node-fetch (npm install node-fetch).</span>
+</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>  <span class="c1">// install node-fetch if not installed (npm install node-fetch).</span>
 <span class="kr">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"New Portfolio"</span><span class="p">,</span>
   <span class="s2">"is_named_target_group"</span><span class="p">:</span> <span class="kc">true</span>
@@ -3468,7 +3519,7 @@ curl -X GET https://api.vainu.io/api/v1/target_groups/<span class="o">{</span>ta
   -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'API-Key: API_KEY'</span>
 
-</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>  <span class="c1">// install node-fetch (npm install node-fetch).</span>
+</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>  <span class="c1">// install node-fetch if not installed (npm install node-fetch).</span>
 
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>  
@@ -3592,7 +3643,7 @@ curl -X PUT https://api.vainu.io/api/v1/target_groups/<span class="o">{</span>ta
   -H <span class="s1">'API-Key: API_KEY'</span> <span class="se">\</span>
   --data <span class="s1">'{"name":"New Portfolio Updated","business_ids":"25578642,01141622","company_names":"Nokia Solutions and Networks Oy,UPM-Kymmene Oyj"}'</span>
 
-</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>  <span class="c1">// install node-fetch (npm install node-fetch).</span>
+</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>  <span class="c1">// install node-fetch if not installed (npm install node-fetch).</span>
 <span class="kr">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"New Portfolio Updated"</span><span class="p">,</span>
   <span class="s2">"business_ids"</span><span class="p">:</span> <span class="p">[</span>
@@ -3743,7 +3794,7 @@ curl -X GET https://api.vainu.io/api/v1/target_group/<span class="o">{</span>tar
   -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'API-Key: API_KEY'</span>
 
-</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>  <span class="c1">// install node-fetch (npm install node-fetch).</span>
+</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>  <span class="c1">// install node-fetch if not installed (npm install node-fetch).</span>
 
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>  
@@ -3902,7 +3953,7 @@ curl -X GET https://api.vainu.io/api/v1/target_group/<span class="o">{</span>tar
   -H <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'API-Key: API_KEY'</span>
 
-</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>  <span class="c1">// install node-fetch (npm install node-fetch).</span>
+</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>  <span class="c1">// install node-fetch if not installed (npm install node-fetch).</span>
 
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json'</span><span class="p">,</span>  
@@ -4068,7 +4119,7 @@ curl -X POST https://api.vainu.io/api/v1/enrich_data/ <span class="se">\</span>
   -H <span class="s1">'API-Key: API_KEY'</span> <span class="se">\</span>
   --data <span class="s1">'{"company_name":"Rovio Entertainment Oyj","business_id":"null","country":"FI"}'</span>
 
-</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>  <span class="c1">// install node-fetch (npm install node-fetch).</span>
+</code></pre><pre class="highlight javascript tab-javascript--nodejs"><code><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'node-fetch'</span><span class="p">);</span>  <span class="c1">// install node-fetch if not installed (npm install node-fetch).</span>
 <span class="kr">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s2">"company_name"</span><span class="p">:</span> <span class="s2">"Rovio Entertainment Oyj"</span><span class="p">,</span>
   <span class="s2">"business_id"</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
